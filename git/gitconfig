@@ -4,3 +4,5 @@
 [alias]
 	st = status -s
 	amend = commit --amend
+[core]
+	excludesfile = /home/ross/.gitignore_global

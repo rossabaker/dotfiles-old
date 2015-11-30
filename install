@@ -3,6 +3,7 @@
 DOTDIR=$(dirname $(readlink -f $0))
 
 ln -sv $DOTDIR/git/gitconfig ~/.gitconfig
+ln -sv $DOTDIR/git/gitignore_global ~/.gitignore_global
 
 setopt EXTENDED_GLOB
 for rcfile in ${DOTDIR}/zsh/runcoms/^README.md(.N); do

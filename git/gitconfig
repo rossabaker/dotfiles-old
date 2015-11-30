@@ -1,3 +1,5 @@
 [user]
 	name = Ross A. Baker
 	email = ross@rossabaker.com
+[alias]
+	st = status -s

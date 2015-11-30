@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+DOTDIR=$(dirname $(readlink -f $0))
+
+ln -sv $DOTDIR/git/gitconfig ~/.gitconfig
+
+setopt EXTENDED_GLOB
+for rcfile in ${DOTDIR}/zsh/runcoms/^README.md(.N); do
+  ln -sv "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+done

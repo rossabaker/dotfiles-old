@@ -3,3 +3,4 @@
 	email = ross@rossabaker.com
 [alias]
 	st = status -s
+	amend = commit --amend

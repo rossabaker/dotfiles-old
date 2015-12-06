@@ -4,7 +4,12 @@ DOTDIR=$(dirname $(readlink -f $0))
 
 ln -sv $DOTDIR/git/gitconfig ~/.gitconfig
 ln -sv $DOTDIR/git/gitignore_global ~/.gitignore_global
+
 ln -sv $DOTDIR/i3/config ~/.i3/config
+ln -sv $DOTDIR/i3/i3status.conf ~/.i3status.conf
+mkdir -p ~/lib/py3status
+ln -sv $DOTDIR/i3/gmusic.py ~/lib/py3status
+
 ln -sv $DOTDIR/X/xprofile ~/.xprofile
 
 setopt EXTENDED_GLOB

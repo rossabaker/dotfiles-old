@@ -155,3 +155,5 @@ bar {
         status_command i3status
         font pango: Ubuntu Mono 13
 }
+
+exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/Earth_Lights_from_Space.jpg

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+xrandr --dpi 100
+setxkbmap -option ctrl:nocaps
+
+gnome-settings-daemon &
+gnome-keyring-daemon &
+nm-applet &

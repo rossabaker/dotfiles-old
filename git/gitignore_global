@@ -2,3 +2,6 @@
 .ensime_cache/
 .idea/
 *.sw?
+.project
+.classpath
+.settings/

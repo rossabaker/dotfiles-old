@@ -15,6 +15,7 @@
 
 (require 'linum-off)
 (global-linum-mode 1)
+(setq column-number-mode t)
 
 (require 'diff-hl)
 (global-diff-hl-mode)

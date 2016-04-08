@@ -128,6 +128,10 @@ bindsym XF86AudioLowerVolume exec /usr/bin/pactl set-sink-volume @DEFAULT_SINK@ 
 bindsym XF86AudioRaiseVolume exec /usr/bin/pactl set-sink-volume @DEFAULT_SINK@ '+5%'
 bindsym XF86AudioMute exec /usr/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle
 
+bindsym XF86AudioPlay exec ~/bin/gmusicctl play
+bindsym XF86AudioNext exec ~/bin/gmusicctl next
+bindsym XF86AudioPrev exec ~/bin/gmusicctl prev
+
 bindcode 195 exec ~/bin/switch-audio speakers
 bindcode Shift+195 exec ~/bin/switch-audio headphones
 

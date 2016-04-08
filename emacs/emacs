@@ -15,7 +15,10 @@
 
 (require 'linum-off)
 (global-linum-mode 1)
+
 (setq column-number-mode t)
+(add-hook 'prog-mode-hook 'fci-mode)
+(add-hook 'prog-mode-hook (lambda () (set-fill-column 80)))
 
 (require 'diff-hl)
 (global-diff-hl-mode)

@@ -10,6 +10,10 @@
 (require 'linum-off)
 (global-linum-mode 1)
 
+(require 'diff-hl)
+(global-diff-hl-mode)
+(diff-hl-flydiff-mode)
+
 (autoload 'markdown-mode "markdown-mode"
    "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))

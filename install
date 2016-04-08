@@ -12,6 +12,8 @@ ln -sv $DOTDIR/i3/gmusic.py ~/lib/py3status
 
 ln -sv $DOTDIR/X/xprofile ~/.xprofile
 
+ln -sv $DOTDIR/emacs/emacs ~/.emacs
+
 setopt EXTENDED_GLOB
 for rcfile in ${DOTDIR}/zsh/runcoms/^README.md(.N); do
   ln -sv "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"

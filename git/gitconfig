@@ -6,3 +6,4 @@
 	amend = commit --amend
 [core]
 	excludesfile = /home/ross/.gitignore_global
+	editor = emacsclient

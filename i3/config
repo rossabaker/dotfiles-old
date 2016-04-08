@@ -177,3 +177,19 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 for_window [title=".*sharing your screen with plus.google.com"] floating enable
+
+assign [class="emacs"] 1
+assign [class="HipChat"] 2
+assign [class="Gitter"] 2
+assign [class="evolution"] 3
+assign [class="VirtualBox"] 8
+assign [class="mythfrontend.real"] 9
+assign [class="google-music-electron"] 10
+
+exec --no-startup-id i3-msg 'workspace 1; append_layout /home/ross/.i3/workspace-1.json'
+exec emacs
+exec google-chrome
+exec hipchat
+exec gitter
+exec evolution
+exec gmusic

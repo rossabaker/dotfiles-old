@@ -10,6 +10,8 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 
+(setq-default indent-tabs-mode nil)
+
 (require 'linum-off)
 (global-linum-mode 1)
 

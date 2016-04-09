@@ -25,6 +25,8 @@
 (add-hook 'prog-mode-hook 'fci-mode)
 (add-hook 'prog-mode-hook (lambda () (set-fill-column 80)))
 
+(ido-mode t)
+
 (require 'diff-hl)
 (global-diff-hl-mode)
 (diff-hl-flydiff-mode)

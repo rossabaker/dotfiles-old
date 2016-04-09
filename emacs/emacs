@@ -7,12 +7,14 @@
   (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/")))
 (package-initialize)
 
+(setq inhibit-startup-screen t)
+(setq initial-scratch-message nil)
+
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (show-paren-mode 1)
 (load-theme 'sanityinc-tomorrow-night t)
-
 
 (setq-default indent-tabs-mode nil)
 

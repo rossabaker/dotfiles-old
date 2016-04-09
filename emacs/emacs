@@ -10,6 +10,7 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
+(show-paren-mode 1)
 (load-theme 'sanityinc-tomorrow-night t)
 
 (define-key global-map (kbd "C-+") 'text-scale-increase)

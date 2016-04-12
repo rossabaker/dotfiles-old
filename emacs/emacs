@@ -29,6 +29,7 @@
 (add-hook 'prog-mode-hook (lambda () (set-fill-column 80)))
 
 (ido-mode t)
+(projectile-global-mode)
 
 (require 'diff-hl)
 (global-diff-hl-mode)

@@ -38,6 +38,16 @@
 
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+(defun rossabaker/ensime-project-p ()
+  "Are we in an ensime project?"
+  (and (buffer-file-name) (ensime-config-find-file (buffer-file-name))))
+
+(defun rossabaker/compile ()
+  "Compile with Ensime where appropriate, compile where not"
+  (interactive)
+  (if (rossabaker/ensime-project-p)
+      (ensime-sbt-do-compile)
+    (call-interactively 'compile)))
 
 (autoload 'markdown-mode "markdown-mode"
    "Major mode for editing Markdown files" t)
@@ -52,7 +62,7 @@
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
-(global-set-key (kbd "C-c t") 'multi-term-next)
+(global-set-key (kbd "C-c c") 'rossabaker/compile)
 
 (global-unset-key (kbd "C-x C-c"))
 (global-unset-key (kbd "C-X C-z"))

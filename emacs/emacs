@@ -50,6 +50,15 @@
       (ensime-sbt-do-compile)
     (call-interactively 'compile)))
 
+(defun rossabaker/go-mode-hook ()
+  ; Call Gofmt before saving
+  (add-hook 'before-save-hook 'gofmt-before-save)
+  ; Customize compile command to run go build
+  (if (not (string-match "go" compile-command))
+      (set (make-local-variable 'compile-command)
+           "go build -v && go vet")))
+(add-hook 'go-mode-hook 'rossabaker/go-mode-hook)
+
 (autoload 'markdown-mode "markdown-mode"
    "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))

@@ -28,6 +28,18 @@
 (add-hook 'prog-mode-hook 'fci-mode)
 (add-hook 'prog-mode-hook (lambda () (set-fill-column 80)))
 
+;;; Backup behavior
+
+(setq rossabaker/backup-directory (concat user-emacs-directory "backups"))
+(if (not (file-exists-p rossabaker/backup-directory))
+    (make-directory rossabaker/backup-directory))
+(setq backup-directory-alist `(("" . ,rossabaker/backup-directory))
+      delete-old-versions t
+      kept-new-versions 10
+      kept-old-versions 2
+      version-control t
+      vc-make-backup-files t)
+
 ;;; Version control
 
 (require 'diff-hl)

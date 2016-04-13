@@ -1,20 +1,24 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
+set -e
 DOTDIR=$(dirname $(readlink -f $0))
 
-ln -sv $DOTDIR/git/gitconfig ~/.gitconfig
-ln -sv $DOTDIR/git/gitignore_global ~/.gitignore_global
+already_symlinked() {
+    local source=$1
+    local dest=$2
+    [ "$(readlink $dest)" = "$DOTDIR/$source" ]
+}
 
-ln -sv $DOTDIR/i3/config ~/.i3/config
-ln -sv $DOTDIR/i3/i3status.conf ~/.i3status.conf
-mkdir -p ~/lib/py3status
-ln -sv $DOTDIR/i3/gmusic.py ~/lib/py3status
+install_file() {
+    local source=$1
+    local dest=$HOME/$file
+    if ! (already_symlinked $source $dest); then
+        ln -sv $DOTDIR/$source $dest
+    fi    
+}
 
-ln -sv $DOTDIR/X/xprofile ~/.xprofile
-
-ln -sv $DOTDIR/emacs/emacs ~/.emacs
-
-setopt EXTENDED_GLOB
-for rcfile in ${DOTDIR}/zsh/runcoms/^README.md(.N); do
-  ln -sv "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+for file in * .[^.]*; do
+    if [ $file != "install" ] && [ $file != ".git" ]; then
+        install_file $file
+    fi
 done

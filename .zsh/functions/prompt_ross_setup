@@ -1,0 +1,208 @@
+# Based on Pure by Sindre Sorhus
+# https://github.com/sindresorhus/pure
+# MIT License
+
+# For my own and others sanity
+# prompt:
+# %F => color dict
+# %f => reset color
+# %~ => current path
+# %* => time
+# %n => username
+# %m => shortname host
+# %(?..) => prompt conditional - %(condition.true.false)
+# terminal codes:
+# \e7   => save cursor position
+# \e[2A => move cursor 2 lines up
+# \e[1G => go to position 1 in terminal
+# \e8   => restore cursor position
+# \e[K  => clears everything after the cursor on the current line
+# \e[2K => clear everything on the current line
+
+
+# turns seconds into human readable time
+# 165392 => 1d 21h 56m 32s
+# https://github.com/sindresorhus/pretty-time-zsh
+prompt_ross_human_time_to_var() {
+	local human=" " total_seconds=$1 var=$2
+	local days=$(( total_seconds / 60 / 60 / 24 ))
+	local hours=$(( total_seconds / 60 / 60 % 24 ))
+	local minutes=$(( total_seconds / 60 % 60 ))
+	local seconds=$(( total_seconds % 60 ))
+	(( days > 0 )) && human+="${days}d "
+	(( hours > 0 )) && human+="${hours}h "
+	(( minutes > 0 )) && human+="${minutes}m "
+	human+="${seconds}s"
+
+	# store human readable time in variable as specified by caller
+	typeset -g "${var}"="${human}"
+}
+
+# stores (into prompt_ross_cmd_exec_time) the exec time of the last command if set threshold was exceeded
+prompt_ross_check_cmd_exec_time() {
+	integer elapsed
+	(( elapsed = EPOCHSECONDS - ${prompt_ross_cmd_timestamp:-$EPOCHSECONDS} ))
+	prompt_ross_cmd_exec_time=
+	(( elapsed > ${PURE_CMD_MAX_EXEC_TIME:=5} )) && {
+		prompt_ross_human_time_to_var $elapsed "prompt_ross_cmd_exec_time"
+	}
+}
+
+prompt_ross_clear_screen() {
+	# enable output to terminal
+	zle -I
+	# clear screen and move cursor to (0, 0)
+	print -n '\e[2J\e[0;0H'
+	# print preprompt
+	prompt_ross_preprompt_render precmd
+}
+
+prompt_ross_set_title() {
+	# emacs terminal does not support settings the title
+	(( ${+EMACS} )) && return
+
+	# tell the terminal we are setting the title
+	print -n '\e]0;'
+	# show hostname if connected through ssh
+	[[ -n $SSH_CONNECTION ]] && print -Pn '(%m) '
+	case $1 in
+		expand-prompt)
+			print -Pn $2;;
+		ignore-escape)
+			print -rn $2;;
+	esac
+	# end set title
+	print -n '\a'
+}
+
+prompt_ross_preexec() {
+	prompt_ross_cmd_timestamp=$EPOCHSECONDS
+
+	# shows the current dir and executed command in the title while a process is active
+	prompt_ross_set_title 'ignore-escape' "$PWD:t: $2"
+}
+
+# string length ignoring ansi escapes
+prompt_ross_string_length_to_var() {
+	local str=$1 var=$2 length
+	# perform expansion on str and check length
+	length=$(( ${#${(S%%)str//(\%([KF1]|)\{*\}|\%[Bbkf])}} ))
+
+	# store string length in variable as specified by caller
+	typeset -g "${var}"="${length}"
+}
+
+prompt_ross_preprompt_render() {
+	# check that no command is currently running, the preprompt will otherwise be rendered in the wrong place
+	[[ -n ${prompt_ross_cmd_timestamp+x} && "$1" != "precmd" ]] && return
+
+	# construct preprompt, beginning with path
+	local preprompt="%F{blue}%~%f"
+	# username and machine if applicable
+	preprompt+=$prompt_ross_username
+	# execution time
+	preprompt+="%F{yellow}${prompt_ross_cmd_exec_time}%f"
+
+	# if executing through precmd, do not perform fancy terminal editing
+	if [[ "$1" == "precmd" ]]; then
+		print -P "\n${preprompt}"
+	else
+		# only redraw if preprompt has changed
+		[[ "${prompt_ross_last_preprompt}" != "${preprompt}" ]] || return
+
+		# calculate length of preprompt and store it locally in preprompt_length
+		integer preprompt_length lines
+		prompt_ross_string_length_to_var "${preprompt}" "preprompt_length"
+
+		# calculate number of preprompt lines for redraw purposes
+		(( lines = ( preprompt_length - 1 ) / COLUMNS + 1 ))
+
+		# calculate previous preprompt lines to figure out how the new preprompt should behave
+		integer last_preprompt_length last_lines
+		prompt_ross_string_length_to_var "${prompt_ross_last_preprompt}" "last_preprompt_length"
+		(( last_lines = ( last_preprompt_length - 1 ) / COLUMNS + 1 ))
+
+		# clr_prev_preprompt erases visual artifacts from previous preprompt
+		local clr_prev_preprompt
+		if (( last_lines > lines )); then
+			# move cursor up by last_lines, clear the line and move it down by one line
+			clr_prev_preprompt="\e[${last_lines}A\e[2K\e[1B"
+			while (( last_lines - lines > 1 )); do
+				# clear the line and move cursor down by one
+				clr_prev_preprompt+='\e[2K\e[1B'
+				(( last_lines-- ))
+			done
+
+			# move cursor into correct position for preprompt update
+			clr_prev_preprompt+="\e[${lines}B"
+		# create more space for preprompt if new preprompt has more lines than last
+		elif (( last_lines < lines )); then
+			# move cursor using newlines because ansi cursor movement can't push the cursor beyond the last line
+			printf $'\n'%.0s {1..$(( lines - last_lines ))}
+		fi
+
+		# disable clearing of line if last char of preprompt is last column of terminal
+		local clr='\e[K'
+		(( COLUMNS * lines == preprompt_length )) && clr=
+
+		# modify previous preprompt
+		print -Pn "${clr_prev_preprompt}\e[${lines}A\e[${COLUMNS}D${preprompt}${clr}\n"
+
+		# redraw prompt (also resets cursor position)
+		zle && zle .reset-prompt
+	fi
+
+	# store previous preprompt for comparison
+	prompt_ross_last_preprompt=$preprompt
+}
+
+prompt_ross_precmd() {
+	# check exec time and store it in a variable
+	prompt_ross_check_cmd_exec_time
+
+	# by making sure that prompt_ross_cmd_timestamp is defined here the async functions are prevented from interfering
+	# with the initial preprompt rendering
+	prompt_ross_cmd_timestamp=
+
+	# shows the full path in the title
+	prompt_ross_set_title 'expand-prompt' '%~'
+
+	# print the preprompt
+	prompt_ross_preprompt_render "precmd"
+
+	# remove the prompt_ross_cmd_timestamp, indicating that precmd has completed
+	unset prompt_ross_cmd_timestamp
+}
+
+prompt_ross_setup() {
+	# prevent percentage showing up
+	# if output doesn't end with a newline
+	export PROMPT_EOL_MARK=''
+
+	prompt_opts=(subst percent)
+
+	zmodload zsh/datetime
+	zmodload zsh/zle
+	autoload -Uz add-zsh-hook
+
+	add-zsh-hook precmd prompt_ross_precmd
+	add-zsh-hook preexec prompt_ross_preexec
+
+	# if the user has not registered a custom zle widget for clear-screen,
+	# override the builtin one so that the preprompt is displayed correctly when
+	# ^L is issued.
+	if [[ $widgets[clear-screen] == 'builtin' ]]; then
+		zle -N clear-screen prompt_ross_clear_screen
+	fi
+
+	# show username@host if logged in through SSH
+	[[ "$SSH_CONNECTION" != '' ]] && prompt_ross_username=' %F{242}%n@%m%f'
+
+	# show username@host if root, with username in white
+	[[ $UID -eq 0 ]] && prompt_ross_username=' %F{white}%n%f%F{242}@%m%f'
+
+	# prompt turns red if the previous command didn't exit with 0
+	PROMPT="%(?.%F{magenta}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f "
+}
+
+prompt_ross_setup "$@"

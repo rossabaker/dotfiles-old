@@ -18,7 +18,7 @@ install_file() {
 }
 
 for file in * .[^.]*; do
-    if [ $file != "install" ] && [ $file != ".git" ]; then
+    if [[ $file != install ]] && [[ $file != .git ]] && [[ $file != .gitignore ]] && [[ $file != *~ ]]; then
         install_file $file
     fi
 done

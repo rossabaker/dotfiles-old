@@ -87,10 +87,17 @@
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "google-chrome")
 
+;;; Ido
+
+(ido-mode t)
+(ido-everywhere t)
+(ido-vertical-mode t)
+(ido-sort-mtime-mode t)
+(setq magit-completing-read-function 'magit-ido-completing-read)
+
 ;;; Miscellaneous
 
 (projectile-global-mode)
-(ido-mode t)
 
 ;;; Keymaps
 

@@ -102,8 +102,8 @@ fabric.properties
 ########## vim
 
 # swap
-[._]*.s[a-w][a-z]
-[._]s[a-w][a-z]
+[._]*.sw[a-z]
+[._]sw[a-z]
 # session
 Session.vim
 # temporary

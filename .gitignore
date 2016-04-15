@@ -1,2 +1,5 @@
 .zsh/*.local
 .zsh/.zcompdump
+.sbt/boot
+.sbt/**/private.sbt
+.sbt/**/target

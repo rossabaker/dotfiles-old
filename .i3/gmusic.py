@@ -77,7 +77,7 @@ class Py3status:
                 'Google Music not running',
                 self.color_offline or i3s_config['color_bad'])
 
-    def spotify(self, i3s_output_list, i3s_config):
+    def gmusic(self, i3s_output_list, i3s_config):
         """
         Get the current "artist - title" and return it.
         """

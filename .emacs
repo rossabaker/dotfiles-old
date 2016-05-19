@@ -91,6 +91,8 @@
 (use-package recentf
   :init (recentf-mode))
 
+(setq view-read-only t)
+
 ;;; Lines and columns and such
 
 (global-linum-mode 1)

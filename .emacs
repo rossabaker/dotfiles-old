@@ -37,6 +37,18 @@
   :ensure t
   :init (which-function-mode))
 
+(use-package ibuffer
+  :ensure t
+  :bind (([remap list-buffers] . ibuffer)))
+
+(use-package ibuffer-vc
+  :ensure t
+  :init (add-hook 'ibuffer-hook
+                  (lambda ()
+                    (ibuffer-vc-set-filter-groups-by-vc-root)
+                    (unless (eq ibuffer-sorting-mode 'alphabetic)
+                      (ibuffer-do-sort-by-alphabetic)))))
+
 ;;; emacsclient
 
 (server-start)

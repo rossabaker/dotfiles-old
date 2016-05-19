@@ -49,9 +49,8 @@
                     (unless (eq ibuffer-sorting-mode 'alphabetic)
                       (ibuffer-do-sort-by-alphabetic)))))
 
-;;; emacsclient
-
-(server-start)
+(use-package server
+  :init (server-mode))
 
 ;;; Lines and columns and such
 

@@ -21,7 +21,13 @@
 (setq inhibit-startup-screen t)
 (setq initial-scratch-message nil)
 
+(use-package page-break-lines
+  :ensure t
+  :init (global-page-break-lines-mode)
+  :diminish page-break-lines-mode)
+
 (fset 'yes-or-no-p #'y-or-n-p)
+
 
 ;;; emacsclient
 

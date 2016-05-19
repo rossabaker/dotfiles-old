@@ -25,8 +25,42 @@
 (global-linum-mode 1)
 (require 'linum-off)
 (setq column-number-mode t)
-(add-hook 'prog-mode-hook 'fci-mode)
 (add-hook 'prog-mode-hook (lambda () (set-fill-column 80)))
+
+;; https://github.com/alpaker/Fill-Column-Indicator/issues/21
+;; https://github.com/purcell/emacs.d/blob/d02323adcdea7f00ad26bc308bf06ce8d1eefb3b/lisp/init-editing-utils.el#L198-L230
+(progn
+  (defun rossabaker/prog-mode-fci-settings ()
+    (turn-on-fci-mode)
+    (when show-trailing-whitespace
+      (set (make-local-variable 'whitespace-style) '(face trailing))
+      (whitespace-mode 1)))
+  
+  (add-hook 'prog-mode-hook 'rossabaker/prog-mode-fci-settings)
+
+  (defun rossabaker/fci-enabled-p ()
+    (and (boundp 'fci-mode) fci-mode))
+
+  (defvar rossabaker/fci-mode-suppressed nil)
+  (defadvice popup-create (before suppress-fci-mode activate)
+    "Suspend fci-mode while popups are visible"
+    (let ((fci-enabled (rossabaker/fci-enabled-p)))
+      (when fci-enabled
+        (set (make-local-variable 'rossabaker/fci-mode-suppressed) fci-enabled)
+        (turn-off-fci-mode))))
+  (defadvice popup-delete (after restore-fci-mode activate)
+    "Restore fci-mode when all popups have closed"
+    (when (and rossabaker/fci-mode-suppressed
+               (null popup-instances))
+      (setq rossabaker/fci-mode-suppressed nil)
+      (turn-on-fci-mode)))
+
+  ;; Regenerate fci-mode line images after switching themes
+  (defadvice enable-theme (after recompute-fci-face activate)
+    (dolist (buffer (buffer-list))
+      (with-current-buffer buffer
+        (when (rossabaker/fci-enabled-p)
+          (turn-on-fci-mode))))))
 
 ;;; Backup behavior
 

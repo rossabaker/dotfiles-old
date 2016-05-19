@@ -16,7 +16,7 @@
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
   (load-theme 'sanityinc-tomorrow-night t))
-
+(blink-cursor-mode -1)
 (show-paren-mode 1)
 (setq inhibit-startup-screen t)
 (setq initial-scratch-message nil)

@@ -50,6 +50,14 @@
 
 (setq-default indent-tabs-mode nil)
 
+(defun rossabaker/desperately-compile ()
+  "Traveling up the path, find a Makefile and `compile'."
+  (interactive)
+  (when (locate-dominating-file default-directory "Makefile")
+  (with-temp-buffer
+    (cd (locate-dominating-file default-directory "Makefile"))
+    (compile "make -k"))))
+
 ;;; Scala
 
 (require 'ensime)
@@ -62,7 +70,7 @@
   (interactive)
   (if (rossabaker/ensime-project-p)
       (ensime-sbt-do-compile)
-    (call-interactively 'compile)))
+    (call-interactively 'rossabaker/desperately-compile)))
 
 ;;; Go
 
@@ -103,7 +111,7 @@
 
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
-(global-set-key (kbd "C-c c") 'rossabaker/compile)
+(global-set-key (kbd "C-c c") 'rossabaker/maybe-compile-with-ensime)
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "C-x g") 'magit-status)

@@ -25,9 +25,13 @@
   :ensure t
   :init (global-page-break-lines-mode)
   :diminish page-break-lines-mode)
-
+
 (fset 'yes-or-no-p #'y-or-n-p)
 
+(use-package anzu
+  :ensure t
+  :init (global-anzu-mode)
+  :diminish anzu-mode)
 
 ;;; emacsclient
 

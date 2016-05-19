@@ -64,6 +64,9 @@
     (setq dired-listing-switches
           (concat dired-listing-switches " --group-directories-first -v"))))
 
+(use-package recentf
+  :init (recentf-mode))
+
 ;;; Lines and columns and such
 
 (global-linum-mode 1)
@@ -193,6 +196,7 @@
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x C-r") 'recentf-open-files)
 
 (global-unset-key (kbd "C-x C-c"))
 (global-unset-key (kbd "C-X C-z"))

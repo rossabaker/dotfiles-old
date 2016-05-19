@@ -33,6 +33,10 @@
   :init (global-anzu-mode)
   :diminish anzu-mode)
 
+(use-package which-func
+  :ensure t
+  :init (which-function-mode))
+
 ;;; emacsclient
 
 (server-start)

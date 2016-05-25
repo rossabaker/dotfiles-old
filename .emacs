@@ -76,6 +76,12 @@
 (use-package server
   :init (server-mode))
 
+(use-package edit-server
+  :ensure t
+  :config
+  (setq edit-server-new-frame nil)
+  (edit-server-start))
+
 (use-package dired
   :config
   (setq dired-auto-revert-buffer t)

@@ -39,9 +39,13 @@
   (tool-bar-mode -1)
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
-  (use-package color-theme-sanityinc-tomorrow
+  (use-package ample-theme
     :ensure t
-    :init (load-theme 'sanityinc-tomorrow-night t)))
+    :init
+    (load-theme 'ample t t)
+    (load-theme 'ample-flat t t)
+    (load-theme 'ample-light t t)
+    (enable-theme 'ample-flat)))
 
 (blink-cursor-mode -1)
 (show-paren-mode 1)

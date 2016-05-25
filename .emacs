@@ -39,7 +39,10 @@
   (tool-bar-mode -1)
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
-  (load-theme 'sanityinc-tomorrow-night t))
+  (use-package color-theme-sanityinc-tomorrow
+    :ensure t
+    :init (load-theme 'sanityinc-tomorrow-night t)))
+
 (blink-cursor-mode -1)
 (show-paren-mode 1)
 (setq inhibit-startup-screen t)
@@ -101,14 +104,17 @@
 
 ;;; Lines and columns and such
 
-(global-linum-mode 1)
-(require 'linum-off)
+(use-package linum-off
+  :ensure t
+  :init (global-linum-mode 1))
 (setq column-number-mode t)
 (add-hook 'prog-mode-hook (lambda () (set-fill-column 80)))
 
 ;; https://github.com/alpaker/Fill-Column-Indicator/issues/21
 ;; https://github.com/purcell/emacs.d/blob/d02323adcdea7f00ad26bc308bf06ce8d1eefb3b/lisp/init-editing-utils.el#L198-L230
-(progn
+(use-package fill-column-indicator
+  :ensure t
+  :init
   (defun rossabaker/prog-mode-fci-settings ()
     (turn-on-fci-mode)
     (when show-trailing-whitespace
@@ -155,9 +161,11 @@
 
 ;;; Version control
 
-(require 'diff-hl)
-(global-diff-hl-mode)
-(diff-hl-flydiff-mode)
+(use-package diff-hl
+  :config
+  (require 'diff-hl-flydiff)
+  (global-diff-hl-mode)
+  (diff-hl-flydiff-mode))
 
 ;;; Basic programming config
 
@@ -173,7 +181,8 @@
 
 ;;; Scala
 
-(require 'ensime)
+(use-package ensime
+  :commands ensime ensime-mode)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 (defun rossabaker/ensime-project-p ()
   "Are we in an ensime project?"
@@ -210,15 +219,32 @@
 
 ;;; Ido
 
-(ido-mode t)
-(ido-everywhere t)
-(ido-vertical-mode t)
-(ido-sort-mtime-mode t)
-(setq magit-completing-read-function 'magit-ido-completing-read)
+(use-package ido
+  :ensure t
+  :init
+  (ido-mode t)
+  (ido-everywhere t)
+  :config
+  (setq magit-completing-read-function 'magit-ido-completing-read))
+(use-package ido-vertical-mode
+  :ensure t
+  :init
+  (with-eval-after-load 'ido
+    (ido-vertical-mode)))
+(use-package ido-sort-mtime
+  :ensure t
+  :init
+  (with-eval-after-load 'ido
+    (ido-sort-mtime-mode 1)))  
 
 ;;; Miscellaneous
 
-(projectile-global-mode)
+(use-package projectile
+  :ensure t
+  :config (projectile-global-mode))
+
+(use-package magit
+  :ensure t)
 
 ;;; Keymaps
 

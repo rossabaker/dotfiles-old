@@ -244,9 +244,7 @@
   :ensure t
   :init
   (ido-mode t)
-  (ido-everywhere t)
-  :config
-  (setq magit-completing-read-function 'magit-ido-completing-read))
+  (ido-everywhere t))
 (use-package ido-vertical-mode
   :ensure t
   :init
@@ -257,6 +255,10 @@
   :init
   (with-eval-after-load 'ido
     (ido-sort-mtime-mode 1)))  
+(use-package ido-completing-read+
+  :ensure t
+  :config
+  (setq magit-completing-read-function 'magit-ido-completing-read))
 
 ;;; Miscellaneous
 

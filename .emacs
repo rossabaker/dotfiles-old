@@ -53,6 +53,10 @@
  x-select-enable-clipboard t
  x-select-enable-primary t)
 
+(fset 'yes-or-no-p #'y-or-n-p)
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+
 ;;; Appearance
 
 (when window-system
@@ -74,8 +78,6 @@
   :ensure t
   :init (global-page-break-lines-mode)
   :diminish page-break-lines-mode)
-
-(fset 'yes-or-no-p #'y-or-n-p)
 
 (use-package anzu
   :ensure t
@@ -113,7 +115,7 @@
   (when
       (or (memq system-type '(gnu gnu/linux))
             (string= (file-name-nondirectory insert-directory-program) "gls"))
-    ;; If we are on a GNU system or have GNU ls, add some more `ls' switches:
+    ;; if we are on a gnu system or have gnu ls, add some more `ls' switches:
     ;; `--group-directories-first' lists directories before files, and `-v'
     ;; sorts numbers in file names naturally, i.e. "image1" goes before
     ;; "image02"
@@ -125,7 +127,7 @@
 
 (setq view-read-only t)
 
-;;; Lines and columns and such
+;;; lines and columns and such
 
 (use-package linum-off
   :ensure t
@@ -133,8 +135,8 @@
 (setq column-number-mode t)
 (add-hook 'prog-mode-hook (lambda () (set-fill-column 80)))
 
-;; https://github.com/alpaker/Fill-Column-Indicator/issues/21
-;; https://github.com/purcell/emacs.d/blob/d02323adcdea7f00ad26bc308bf06ce8d1eefb3b/lisp/init-editing-utils.el#L198-L230
+;; https://github.com/alpaker/fill-column-indicator/issues/21
+;; https://github.com/purcell/emacs.d/blob/d02323adcdea7f00ad26bc308bf06ce8d1eefb3b/lisp/init-editing-utils.el#l198-l230
 (use-package fill-column-indicator
   :ensure t
   :init
@@ -151,26 +153,26 @@
 
   (defvar rossabaker/fci-mode-suppressed nil)
   (defadvice popup-create (before suppress-fci-mode activate)
-    "Suspend fci-mode while popups are visible"
+    "suspend fci-mode while popups are visible"
     (let ((fci-enabled (rossabaker/fci-enabled-p)))
       (when fci-enabled
         (set (make-local-variable 'rossabaker/fci-mode-suppressed) fci-enabled)
         (turn-off-fci-mode))))
   (defadvice popup-delete (after restore-fci-mode activate)
-    "Restore fci-mode when all popups have closed"
+    "restore fci-mode when all popups have closed"
     (when (and rossabaker/fci-mode-suppressed
                (null popup-instances))
       (setq rossabaker/fci-mode-suppressed nil)
       (turn-on-fci-mode)))
 
-  ;; Regenerate fci-mode line images after switching themes
+  ;; regenerate fci-mode line images after switching themes
   (defadvice enable-theme (after recompute-fci-face activate)
     (dolist (buffer (buffer-list))
       (with-current-buffer buffer
         (when (rossabaker/fci-enabled-p)
           (turn-on-fci-mode))))))
 
-;;; Backup behavior
+;;; backup behavior
 
 (setq rossabaker/backup-directory (concat user-emacs-directory "backups"))
 (if (not (file-exists-p rossabaker/backup-directory))
@@ -182,7 +184,7 @@
       version-control t
       vc-make-backup-files t)
 
-;;; Version control
+;;; version control
 
 (use-package diff-hl
   :config
@@ -190,55 +192,55 @@
   (global-diff-hl-mode)
   (diff-hl-flydiff-mode))
 
-;;; Basic programming config
+;;; basic programming config
 
 (defun rossabaker/desperately-compile ()
-  "Traveling up the path, find a Makefile and `compile'."
+  "traveling up the path, find a makefile and `compile'."
   (interactive)
-  (when (locate-dominating-file default-directory "Makefile")
+  (when (locate-dominating-file default-directory "makefile")
   (with-temp-buffer
-    (cd (locate-dominating-file default-directory "Makefile"))
+    (cd (locate-dominating-file default-directory "makefile"))
     (compile "make -k"))))
 
-;;; Scala
+;;; scala
 
 (use-package ensime
   :commands ensime ensime-mode)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 (defun rossabaker/ensime-project-p ()
-  "Are we in an ensime project?"
+  "are we in an ensime project?"
   (and (buffer-file-name) (ensime-config-find-file (buffer-file-name))))
 (defun rossabaker/maybe-compile-with-ensime ()
-  "Compile with Ensime where appropriate, compile where not"
+  "compile with ensime where appropriate, compile where not"
   (interactive)
   (if (rossabaker/ensime-project-p)
       (ensime-sbt-do-compile)
     (call-interactively 'rossabaker/desperately-compile)))
 
-;;; Go
+;;; go
 
 (defun rossabaker/go-mode-hook ()
-  ; Call Gofmt before saving
+  ; call gofmt before saving
   (add-hook 'before-save-hook 'gofmt-before-save)
-  ; Customize compile command to run go build
+  ; customize compile command to run go build
   (if (not (string-match "go" compile-command))
       (set (make-local-variable 'compile-command)
            "go build -v && go vet")))
 (add-hook 'go-mode-hook 'rossabaker/go-mode-hook)
 
-;;; Markdown
+;;; markdown
 
 (autoload 'markdown-mode "markdown-mode"
-   "Major mode for editing Markdown files" t)
+   "major mode for editing markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
-;;; Chrome integration
+;;; chrome integration
 
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "google-chrome")
 
-;;; Ido
+;;; ido
 
 (use-package ido
   :ensure t

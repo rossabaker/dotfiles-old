@@ -1,5 +1,10 @@
-.zsh/*.local
-.zsh/.zcompdump
-.sbt/boot
+.emacs.d/elpa/
+.emacs.d/ido.last
+.emacs.d/projectile-bookmarks.eld
+.emacs.d/recentf
 .sbt/**/private.sbt
 .sbt/**/target
+.sbt/0.13/dependency/
+.sbt/boot
+.zsh/*.local
+.zsh/.zcompdump

@@ -19,8 +19,12 @@
 
 ;; Inspirations:
 ;; * https://github.com/lunaryorn/.emacs.d
+;; * https://github.com/angrybacon/dotemacs/blob/master/dotemacs.org
+;; * https://github.com/technomancy/better-defaults/blob/master/better-defaults.el
 
 
+
+;;; Packaging
 
 (require 'package)
 (setq package-enable-at-startup nil)
@@ -28,10 +32,26 @@
              '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 
-;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
+
+
+
+;;; Better defaults
+
+(setq-default
+ confirm-kill-emacs 'yes-or-no-p
+ cursor-in-non-selected-windows nil
+ indent-tabs-mode nil
+ inhibit-startup-screen t
+ initial-scratch-message ""
+ load-prefer-newer t
+ mouse-yank-at-point t
+ tab-width 4
+ uniquify-buffer-name-style 'forward
+ x-select-enable-clipboard t
+ x-select-enable-primary t)
 
 ;;; Appearance
 
@@ -49,8 +69,6 @@
 
 (blink-cursor-mode -1)
 (show-paren-mode 1)
-(setq inhibit-startup-screen t)
-(setq initial-scratch-message nil)
 
 (use-package page-break-lines
   :ensure t
@@ -92,7 +110,8 @@
 (use-package dired
   :config
   (setq dired-auto-revert-buffer t)
-  (when (or (memq system-type '(gnu gnu/linux))
+  (when
+      (or (memq system-type '(gnu gnu/linux))
             (string= (file-name-nondirectory insert-directory-program) "gls"))
     ;; If we are on a GNU system or have GNU ls, add some more `ls' switches:
     ;; `--group-directories-first' lists directories before files, and `-v'
@@ -172,8 +191,6 @@
   (diff-hl-flydiff-mode))
 
 ;;; Basic programming config
-
-(setq-default indent-tabs-mode nil)
 
 (defun rossabaker/desperately-compile ()
   "Traveling up the path, find a Makefile and `compile'."

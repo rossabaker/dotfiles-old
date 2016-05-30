@@ -240,28 +240,31 @@
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "google-chrome")
 
-;;; ido
+;;; ivy/swiper/counsel
 
-(use-package ido
+(use-package ivy
   :ensure t
-  :init
-  (ido-mode t)
-  (ido-everywhere t))
-(use-package ido-vertical-mode
-  :ensure t
-  :init
-  (with-eval-after-load 'ido
-    (ido-vertical-mode)))
-(use-package ido-sort-mtime
-  :ensure t
-  :init
-  (with-eval-after-load 'ido
-    (ido-sort-mtime-mode 1)))  
-(use-package ido-completing-read+
-  :ensure t
+  :init (ivy-mode 1)
   :config
-  (setq magit-completing-read-function 'magit-ido-completing-read))
-
+  (setq
+   ivy-use-virtual-buffers t
+   ivy-height 10
+   ivy-count-format "%-4d ")
+  :bind
+  (("C-s"     . swiper)
+   ("M-x"     . counsel-M-x)
+   ("C-x C-f" . counsel-find-file)
+   ("<f1> f"  . counsel-describe-function)
+   ("<f1> v"  . counsel-describe-variable)
+   ("<f1> l"  . counsel-load-library)
+   ("<f2> i"  . counsel-info-lookup-symbol)
+   ("<f2> u"  . counsel-unicode-char)
+   ("C-c g"   . counsel-git)
+   ("C-c j"   . counsel-git-grep)
+   ("C-c k"   . counsel-ag)
+   ("C-c l"   . counsel-locate)
+   ("C-c r"   . ivy-resume)))
+  
 ;;; Miscellaneous
 
 (use-package projectile
@@ -276,8 +279,6 @@
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
 (global-set-key (kbd "C-c c") 'rossabaker/maybe-compile-with-ensime)
-(global-set-key (kbd "C-r") 'isearch-backward-regexp)
-(global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
 

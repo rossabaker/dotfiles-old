@@ -192,6 +192,10 @@
   (global-diff-hl-mode)
   (diff-hl-flydiff-mode))
 
+(use-package unfill
+  :ensure t
+  :bind (([remap fill-paragraph] . toggle-fill-or-unfill)))
+
 ;;; basic programming config
 
 (defun rossabaker/desperately-compile ()
@@ -205,6 +209,7 @@
 ;;; scala
 
 (use-package ensime
+  :ensure t
   :commands ensime ensime-mode)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 (defun rossabaker/ensime-project-p ()

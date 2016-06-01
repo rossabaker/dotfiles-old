@@ -35,6 +35,7 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
+(setq use-package-always-ensure t)
 
 
 
@@ -64,7 +65,6 @@
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
   (use-package ample-theme
-    :ensure t
     :init
     (load-theme 'ample t t)
     (load-theme 'ample-flat t t)
@@ -75,25 +75,20 @@
 (show-paren-mode 1)
 
 (use-package page-break-lines
-  :ensure t
   :init (global-page-break-lines-mode)
   :diminish page-break-lines-mode)
 
 (use-package anzu
-  :ensure t
   :init (global-anzu-mode)
   :diminish anzu-mode)
 
 (use-package which-func
-  :ensure t
   :init (which-function-mode))
 
 (use-package ibuffer
-  :ensure t
   :bind (([remap list-buffers] . ibuffer)))
 
 (use-package ibuffer-vc
-  :ensure t
   :init (add-hook 'ibuffer-hook
                   (lambda ()
                     (ibuffer-vc-set-filter-groups-by-vc-root)
@@ -104,12 +99,12 @@
   :init (server-mode))
 
 (use-package edit-server
-  :ensure t
   :config
   (setq edit-server-new-frame nil)
   (edit-server-start))
 
 (use-package dired
+  :ensure nil
   :config
   (setq dired-auto-revert-buffer t)
   (when
@@ -130,7 +125,6 @@
 ;;; lines and columns and such
 
 (use-package linum-off
-  :ensure t
   :init (global-linum-mode 1))
 (setq column-number-mode t)
 (add-hook 'prog-mode-hook (lambda () (set-fill-column 80)))
@@ -138,7 +132,6 @@
 ;; https://github.com/alpaker/fill-column-indicator/issues/21
 ;; https://github.com/purcell/emacs.d/blob/d02323adcdea7f00ad26bc308bf06ce8d1eefb3b/lisp/init-editing-utils.el#l198-l230
 (use-package fill-column-indicator
-  :ensure t
   :init
   (defun rossabaker/prog-mode-fci-settings ()
     (turn-on-fci-mode)
@@ -193,7 +186,6 @@
   (diff-hl-flydiff-mode))
 
 (use-package unfill
-  :ensure t
   :bind (([remap fill-paragraph] . toggle-fill-or-unfill)))
 
 ;;; basic programming config
@@ -209,7 +201,6 @@
 ;;; scala
 
 (use-package ensime
-  :ensure t
   :commands ensime ensime-mode)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 (defun rossabaker/ensime-project-p ()
@@ -248,7 +239,6 @@
 ;;; ivy/swiper/counsel
 
 (use-package ivy
-  :ensure t
   :init (ivy-mode 1)
   :config
   (setq
@@ -273,12 +263,10 @@
 ;;; Miscellaneous
 
 (use-package projectile
-  :ensure t
   :init (projectile-global-mode)
   :config (setq projectile-completion-system 'ivy))
 
-(use-package magit
-  :ensure t)
+(use-package magit)
 
 ;;; Keymaps
 

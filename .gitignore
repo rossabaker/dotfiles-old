@@ -1,8 +1,5 @@
-.emacs.d/elpa/
-.emacs.d/ido.last
-.emacs.d/projectile-bookmarks.eld
-.emacs.d/recentf
-.emacs.d/smex-items
+.emacs.d/*
+!.emacs.d/*.el
 .sbt/**/private.sbt
 .sbt/**/target
 .sbt/0.13/dependency/

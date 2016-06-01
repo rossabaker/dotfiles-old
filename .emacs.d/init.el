@@ -269,7 +269,8 @@
 
 (use-package projectile
   :ensure t
-  :config (projectile-global-mode))
+  :init (projectile-global-mode)
+  :config (setq projectile-completion-system 'ivy))
 
 (use-package magit
   :ensure t)

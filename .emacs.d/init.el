@@ -66,10 +66,7 @@
   (scroll-bar-mode -1)
   (use-package ample-theme
     :init
-    (load-theme 'ample t t)
-    (load-theme 'ample-flat t t)
-    (load-theme 'ample-light t t)
-    (enable-theme 'ample-flat)))
+    (load-theme 'ample t t)))
 
 (blink-cursor-mode -1)
 (show-paren-mode 1)

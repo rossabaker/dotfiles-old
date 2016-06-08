@@ -66,7 +66,7 @@
   (scroll-bar-mode -1)
   (use-package ample-theme
     :init
-    (load-theme 'ample t t)))
+    (load-theme 'ample t nil)))
 
 (blink-cursor-mode -1)
 (show-paren-mode 1)

@@ -235,6 +235,8 @@
 
 ;;; ivy/swiper/counsel
 
+(use-package counsel)
+
 (use-package ivy
   :init (ivy-mode 1)
   :config

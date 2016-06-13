@@ -32,4 +32,7 @@ fi
 alias ls='ls --color=tty'
 alias grep="grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg.svn}"
 
-source $ZDOTDIR/.zshrc.local
+zshrc_local=$ZDOTDIR/.zshrc.local
+if [ -r $zshrc_local ]; then
+    source $zshrc_local
+fi

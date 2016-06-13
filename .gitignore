@@ -1,8 +1,12 @@
+*.pyc
+
 .emacs.d/*
 !.emacs.d/*.el
+
 .sbt/**/private.sbt
 .sbt/**/target
 .sbt/0.13/dependency/
 .sbt/boot
+
 .zsh/*.local
 .zsh/.zcompdump

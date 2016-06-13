@@ -183,7 +183,7 @@
   (diff-hl-flydiff-mode))
 
 (use-package unfill
-  :bind (([remap fill-paragraph] . toggle-fill-or-unfill)))
+  :bind (([remap fill-paragraph] . toggle-fill-unfill)))
 
 ;;; basic programming config
 

@@ -279,3 +279,7 @@
 (global-unset-key (kbd "C-x C-c"))
 (global-unset-key (kbd "C-X C-z"))
 (global-unset-key (kbd "C-z"))
+
+(when (eq system-type 'darwin) ;; mac specific settings
+  (setq mac-command-modifier 'meta))
+

@@ -29,7 +29,7 @@ if [ -n "$INSIDE_EMACS" ]; then
     print -P "\033AnSiTc %d"
 fi
 
-alias ls='ls --color=tty'
+alias ls='ls -Gp'
 alias grep="grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg.svn}"
 
 zshrc_local=$ZDOTDIR/.zshrc.local

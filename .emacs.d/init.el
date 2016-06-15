@@ -198,8 +198,11 @@
 ;;; scala
 
 (use-package ensime
-  :commands ensime ensime-mode)
-(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+  :commands ensime ensime-mode
+  :config
+  (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+  (setq scala-indent:align-parameters t
+        scala-indent:use-javadoc-style t))
 (defun rossabaker/ensime-project-p ()
   "are we in an ensime project?"
   (and (buffer-file-name) (ensime-config-find-file (buffer-file-name))))

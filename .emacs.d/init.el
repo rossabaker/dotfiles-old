@@ -228,6 +228,15 @@
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
+;;; YAML
+
+(use-package yaml-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+  (add-hook 'html-mode-hook 
+            '(lambda () 
+               (setq c-basic-offset 2))))
+  
 ;;; chrome integration
 
 (setq browse-url-browser-function 'browse-url-generic

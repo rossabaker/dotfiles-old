@@ -281,5 +281,6 @@
 (global-unset-key (kbd "C-z"))
 
 (when (eq system-type 'darwin) ;; mac specific settings
-  (setq mac-command-modifier 'meta))
-
+  (setq mac-command-modifier 'meta)
+  (use-package exec-path-from-shell
+    :init (exec-path-from-shell-initialize)))

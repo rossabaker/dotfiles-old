@@ -1,12 +1,22 @@
 #!/usr/bin/env bash
 
 set -e
-DOTDIR=$(dirname $(readlink -f $0))
 
+case "$OSTYPE" in
+    darwin*)
+        READLINK=greadlink
+        ;;
+    *)
+        READLINK=readlink
+        ;;
+esac
+
+DOTDIR=$(dirname $($READLINK -f $0))
+                  
 already_symlinked() {
     local source=$1
     local dest=$2
-    [ "$(readlink $dest)" = "$DOTDIR/$source" ]
+    [ "$($READLINK $dest)" = "$DOTDIR/$source" ]
 }
 
 install_file() {

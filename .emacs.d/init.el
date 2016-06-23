@@ -239,7 +239,11 @@
   (add-hook 'html-mode-hook 
             '(lambda () 
                (setq c-basic-offset 2))))
-  
+
+;;; HCL
+
+(use-package hcl-mode)
+
 ;;; chrome integration
 
 (setq browse-url-browser-function 'browse-url-generic

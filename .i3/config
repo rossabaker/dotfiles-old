@@ -134,6 +134,9 @@ bindsym XF86AudioPlay exec ~/bin/gmusicctl play
 bindsym XF86AudioNext exec ~/bin/gmusicctl next
 bindsym XF86AudioPrev exec ~/bin/gmusicctl prev
 
+bindsym XF86MonBrightnessDown exec xbacklight -10
+bindsym XF86MonBrightnessUp exec xbacklight +10
+
 bindcode 195 exec ~/bin/switch-audio speakers
 bindcode Shift+195 exec ~/bin/switch-audio headphones
 

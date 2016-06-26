@@ -1,5 +1,6 @@
 #!/bin/bash
 
-setxbmap -model chromebook_m_ralt
+setxkbmap -model chromebook_m_ralt
+xmodmap ~/.Xmodmap
 
 nm-applet &

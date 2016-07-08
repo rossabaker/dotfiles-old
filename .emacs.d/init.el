@@ -280,7 +280,9 @@
 
 (use-package projectile
   :init (projectile-global-mode)
-  :config (setq projectile-completion-system 'ivy))
+  :config
+  (setq projectile-completion-system 'ivy
+        projectile-globally-ignored-directories '(".ensime_cache" "target")))
 
 (use-package magit)
 

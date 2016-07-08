@@ -5,5 +5,5 @@
 	st = status -s
 	amend = commit --amend
 [core]
-	excludesfile = /home/ross/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	editor = emacsclient

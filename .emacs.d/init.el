@@ -27,9 +27,12 @@
 ;;; Packaging
 
 (require 'package)
-(setq package-enable-at-startup nil)
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/"))
+(setq
+ use-package-always-ensure t
+ package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                    ("org" . "http://orgmode.org/elpa/")
+                    ("melpa" . "http://melpa.org/packages/")
+                    ("melpa-stable" . "http://stable.melpa.org/packages/")))
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
@@ -199,10 +202,9 @@
 
 (use-package ensime
   :commands ensime ensime-mode
+  :pin melpa-stable
   :config
-  (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
-  (setq scala-indent:align-parameters t
-        scala-indent:use-javadoc-style t))
+  (add-hook 'scala-mode-hook 'ensime-scala-mode-hook))
 (defun rossabaker/ensime-project-p ()
   "are we in an ensime project?"
   (and (buffer-file-name) (ensime-config-find-file (buffer-file-name))))

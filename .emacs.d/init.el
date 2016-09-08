@@ -303,4 +303,9 @@
 (when (eq system-type 'darwin) ;; mac specific settings
   (setq mac-command-modifier 'meta)
   (use-package exec-path-from-shell
-    :init (exec-path-from-shell-initialize)))
+    :init (exec-path-from-shell-initialize))
+  (mac-auto-operator-composition-mode))
+
+(when (window-system)
+  (set-default-font "Fira Code"))
+

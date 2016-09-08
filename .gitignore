@@ -7,6 +7,7 @@
 .sbt/**/target
 .sbt/0.13/dependency/
 .sbt/boot
+.sbt/gpg
 
 .zsh/*.local
 .zsh/.zcompdump

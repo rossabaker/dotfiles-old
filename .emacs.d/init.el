@@ -23,3 +23,7 @@
 (setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
 (if (file-readable-p custom-file)
     (load custom-file))
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))

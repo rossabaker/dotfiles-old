@@ -43,3 +43,12 @@
 (when (memq window-system '(ns mac))
   (set-default-font "Fira Code")
   (mac-auto-operator-composition-mode))
+
+;; h/t https://www.emacswiki.org/emacs/AlarmBell
+(defun ross/terminal-visible-bell ()
+  "A friendlier visual bell effect."
+  (invert-face 'mode-line)
+  (run-with-timer 0.1 nil 'invert-face 'mode-line))
+(setq visible-bell       nil
+      ring-bell-function #'ross/terminal-visible-bell)
+ 

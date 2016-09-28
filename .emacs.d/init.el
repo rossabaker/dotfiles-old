@@ -14,6 +14,9 @@
 ;; GNU Emacs; see the file COPYING.  If not, write to the Free Software
 ;; Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
 
+;; Credits
+;; https://github.com/bodil/emacs.d
+
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives
@@ -27,3 +30,10 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
+
+;; When I was a child, I spake as a child,
+;; I understood as a child, I thought as a child:
+;; but when I became a man, I put away childish things.
+;;   -- 1 Corinthians, 13:11
+(dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
+  (when (fboundp mode) (funcall mode -1)))

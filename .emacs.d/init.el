@@ -46,6 +46,10 @@
 (when (memq window-system '(ns mac))
   (set-default-font "Fira Code")
   (mac-auto-operator-composition-mode))
+(use-package zenburn-theme
+  :ensure t
+  :config
+  (load-theme 'zenburn))
 
 ;; h/t https://www.emacswiki.org/emacs/AlarmBell
 (defun ross/terminal-visible-bell ()

@@ -37,7 +37,8 @@
 ;;   -- 1 Corinthians, 13:11
 (dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode blink-cursor-mode))
   (when (fboundp mode) (funcall mode -1)))
-(setq inhibit-startup-message t)
+(setq inhibit-startup-message t
+      initial-scratch-message nil)
 
 (when (memq window-system '(ns mac))
   (set-default-font "Fira Code")

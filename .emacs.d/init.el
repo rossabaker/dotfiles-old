@@ -83,5 +83,8 @@
 (use-package ws-butler
   :init (add-hook 'prog-mode-hook #'ws-butler-mode))
 
+(use-package server
+  :init (server-start))
+
 (use-package ensime
   :pin melpa-stable)

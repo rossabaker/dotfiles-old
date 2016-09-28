@@ -27,6 +27,7 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
+(setq use-package-always-ensure t)
 
 ;; h/t https://github.com/bodil/emacs.d
 ;;
@@ -50,4 +51,3 @@
   (run-with-timer 0.1 nil 'invert-face 'mode-line))
 (setq visible-bell       nil
       ring-bell-function #'ross/terminal-visible-bell)
- 

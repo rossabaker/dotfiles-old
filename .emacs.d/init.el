@@ -35,7 +35,7 @@
 ;; I understood as a child, I thought as a child:
 ;; but when I became a man, I put away childish things.
 ;;   -- 1 Corinthians, 13:11
-(dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
+(dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode blink-cursor-mode))
   (when (fboundp mode) (funcall mode -1)))
 
 (when (memq window-system '(ns mac))

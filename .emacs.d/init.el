@@ -1,5 +1,5 @@
 ;; Copyright (C) 2016 Ross A. Baker
-;; 
+;;
 ;; This program is free software; you can redistribute it and/or modify it under
 ;; the terms of the GNU General Public License as published by the Free Software
 ;; Foundation; either version 3 of the License, or (at your option) any later
@@ -62,7 +62,23 @@
 (use-package magit
   :bind ("C-x g" . magit-status))
 
-(add-hook 'prog-mode-hook (lambda () (setq show-trailing-whitespace t)))
+(setq show-trailing-whitespace t
+      indent-tabs-mode nil
+      require-file-newline t)
+;; https://github.com/r0man/.emacs.d/blob/master/init.el.org
+(defun indent-buffer ()
+  "Indent the whole buffer."
+  (interactive)
+  (indent-region (point-min) (point-max)))
+(defun untabify-buffer ()
+  "Remove all tabs from the current buffer."
+  (interactive)
+  (untabify (point-min) (point-max)))
+(defun cleanup-buffer ()
+  "Cleanup the current buffer."
+  (interactive)
+  (indent-buffer)
+  (delete-trailing-whitespace))
 ;; Trim trailing whitespace on write, from modified lines only
 (use-package ws-butler
   :init (add-hook 'prog-mode-hook #'ws-butler-mode))

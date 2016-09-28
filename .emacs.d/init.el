@@ -52,6 +52,11 @@
   (run-with-timer 0.1 nil 'invert-face 'mode-line))
 (setq visible-bell       nil
       ring-bell-function #'ross/terminal-visible-bell)
- 
+
 (use-package magit
   :bind ("C-x g" . magit-status))
+
+(add-hook 'prog-mode-hook (lambda () (setq show-trailing-whitespace t)))
+;; Trim trailing whitespace on write, from modified lines only
+(use-package ws-butler
+  :init (add-hook 'prog-mode-hook #'ws-butler-mode))

@@ -19,3 +19,7 @@
 (add-to-list 'package-archives
       '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
+
+(setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
+(if (file-readable-p custom-file)
+    (load custom-file))

@@ -16,8 +16,10 @@
 
 (require 'package)
 (setq package-enable-at-startup nil)
-(add-to-list 'package-archives
-      '("melpa" . "https://melpa.org/packages/"))
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+			 ("org" . "http://orgmode.org/elpa/")
+			 ("melpa" . "http://melpa.org/packages/")
+			 ("melpa-stable" . "http://stable.melpa.org/packages/")))
 (package-initialize)
 
 (setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
@@ -60,3 +62,6 @@
 ;; Trim trailing whitespace on write, from modified lines only
 (use-package ws-butler
   :init (add-hook 'prog-mode-hook #'ws-butler-mode))
+
+(use-package ensime
+  :pin melpa-stable)

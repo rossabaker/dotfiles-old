@@ -31,6 +31,7 @@
   (package-install 'use-package))
 (setq use-package-always-ensure t)
 (require 'bind-key)
+(require 'diminish)
 
 ;; h/t https://github.com/bodil/emacs.d
 ;;
@@ -81,6 +82,7 @@
   (delete-trailing-whitespace))
 ;; Trim trailing whitespace on write, from modified lines only
 (use-package ws-butler
+  :diminish ws-butler-mode
   :init (add-hook 'prog-mode-hook #'ws-butler-mode))
 
 (use-package server
@@ -123,6 +125,7 @@
   ("C-x l" . counsel-locate))
 
 (use-package undo-tree
+  :diminish undo-tree-mode
   :init
   (global-undo-tree-mode))
 

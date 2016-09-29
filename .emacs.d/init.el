@@ -122,4 +122,8 @@
   ("C-c k" . counsel-ag)
   ("C-x l" . counsel-locate))
 
+(use-package undo-tree
+  :init
+  (global-undo-tree-mode))
+
 (use-package lorem-ipsum)

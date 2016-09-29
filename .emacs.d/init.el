@@ -121,3 +121,5 @@
   ("C-c j" . counsel-git-grep)
   ("C-c k" . counsel-ag)
   ("C-x l" . counsel-locate))
+
+(use-package lorem-ipsum)

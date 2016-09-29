@@ -130,3 +130,5 @@
   (global-undo-tree-mode))
 
 (use-package lorem-ipsum)
+
+(global-set-key (kbd "M-o") 'other-window)

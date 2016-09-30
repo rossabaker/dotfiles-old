@@ -90,6 +90,9 @@
 
 (use-package ensime
   :pin melpa-stable)
+(defun ross/ensime-project-p ()
+  "Are we in an Ensime project?"
+  (ensime-config-find-file (or buffer-file-name default-directory)))
 
 (use-package swiper
   :bind ("C-s" . swiper))
@@ -132,3 +135,12 @@
 (use-package lorem-ipsum)
 
 (global-set-key (kbd "M-o") 'other-window)
+
+(defun compile-smarter ()
+  "Compile with ensime-sbt-do-compile if in an Ensime project, else with compile"
+  (interactive)
+  (call-interactively
+   (if (ross/ensime-project-p)
+       'ensime-sbt-do-compile
+     'compile)))
+(global-set-key (kbd "C-c c") 'compile-smarter)

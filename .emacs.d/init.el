@@ -134,6 +134,17 @@
 
 (use-package lorem-ipsum)
 
+(use-package markdown-mode)
+
+(use-package hcl-mode)
+
+(use-package web-mode
+  :config
+  (setq web-mode-engines-alist
+	'(("php"    . "\\.phtml\\'")
+	  ("blade"  . "\\.blade\\.")
+	  ("go"     . "\\.ctmpl\\'"))))
+
 (global-set-key (kbd "M-o") 'other-window)
 
 (defun compile-smarter ()

@@ -88,6 +88,12 @@
 (use-package server
   :init (server-start))
 
+(use-package edit-server
+  :config
+  (setq edit-server-new-frame nil)
+  :init
+  (edit-server-start))
+
 (use-package ensime
   :pin melpa-stable)
 (defun ross/ensime-project-p ()

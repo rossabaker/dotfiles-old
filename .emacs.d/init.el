@@ -158,6 +158,7 @@
   ("M-q" . unfill-toggle))
 
 (global-set-key (kbd "M-o") 'other-window)
+(global-set-key (kbd "C-c SPC") 'just-one-space) ; work around Spotlight conflict on OSX
 
 (defun compile-smarter ()
   "Compile with ensime-sbt-do-compile if in an Ensime project, else with compile"

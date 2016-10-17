@@ -161,3 +161,7 @@
        'ensime-sbt-do-compile
      'compile)))
 (global-set-key (kbd "C-c c") 'compile-smarter)
+
+(let ((docker-file (expand-file-name "~/.emacs.d/custom.el")))
+  (if (file-readable-p docker-file)
+    (load docker-file)))

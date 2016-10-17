@@ -153,6 +153,10 @@
 	  ("blade"  . "\\.blade\\.")
 	  ("go"     . "\\.ctmpl\\'"))))
 
+(use-package unfill
+  :bind
+  ("M-q" . unfill-toggle))
+
 (global-set-key (kbd "M-o") 'other-window)
 
 (defun compile-smarter ()

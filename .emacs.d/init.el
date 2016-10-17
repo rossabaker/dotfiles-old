@@ -95,7 +95,9 @@
   (edit-server-start))
 
 (use-package ensime
-  :pin melpa-stable)
+  :pin melpa-stable
+  :config
+  (setq scala-indent:use-javadoc-style t))
 (defun ross/ensime-project-p ()
   "Are we in an Ensime project?"
   (ensime-config-find-file (or buffer-file-name default-directory)))

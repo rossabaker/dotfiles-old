@@ -44,9 +44,7 @@
 (setq inhibit-startup-message t
       initial-scratch-message nil)
 
-(when (memq window-system '(ns mac))
-  (set-default-font "Fira Code")
-  (mac-auto-operator-composition-mode))
+(load (expand-file-name "~/.emacs.d/fira.el"))
 (use-package zenburn-theme
   :ensure t
   :config

@@ -9,3 +9,9 @@
 	editor = emacsclient
 [push]
 	default = simple
+
+[url "git@github.com:"]
+	insteadOf = "gh:"
+
+[include]
+	path = ~/.gitconfig_local

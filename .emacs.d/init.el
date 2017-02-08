@@ -160,6 +160,10 @@
   ;; This causes an infinite loop with Fira Code
   (setq eshell-status-in-modeline nil))
 
+(use-package guru-mode
+  :config
+  (guru-global-mode +1))
+
 (global-set-key (kbd "M-o") 'other-window)
 (global-set-key (kbd "C-c SPC") 'just-one-space) ; work around Spotlight conflict on OSX
 

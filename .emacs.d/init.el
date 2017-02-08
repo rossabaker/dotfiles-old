@@ -44,7 +44,7 @@
 (setq inhibit-startup-message t
       initial-scratch-message nil)
 
-(load (expand-file-name "~/.emacs.d/fira.el"))
+(load-file (expand-file-name "~/.emacs.d/fira.el"))
 (use-package zenburn-theme
   :ensure t
   :config
@@ -154,6 +154,11 @@
 (use-package unfill
   :bind
   ("M-q" . unfill-toggle))
+
+(use-package eshell
+  :config
+  ;; This causes an infinite loop with Fira Code
+  (setq eshell-status-in-modeline nil))
 
 (global-set-key (kbd "M-o") 'other-window)
 (global-set-key (kbd "C-c SPC") 'just-one-space) ; work around Spotlight conflict on OSX

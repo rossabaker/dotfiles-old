@@ -45,10 +45,9 @@
       initial-scratch-message nil)
 
 (load-file (expand-file-name "~/.emacs.d/fira.el"))
-(use-package zenburn-theme
-  :ensure t
+(use-package material-theme
   :config
-  (load-theme 'zenburn))
+  (load-theme 'material t))
 
 ;; h/t https://www.emacswiki.org/emacs/AlarmBell
 (defun ross/terminal-visible-bell ()

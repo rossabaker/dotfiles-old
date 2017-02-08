@@ -163,6 +163,11 @@
   :config
   (guru-global-mode +1))
 
+(use-package exec-path-from-shell
+  :config
+  (when (memq window-system '(mac ns))
+    (exec-path-from-shell-initialize)))
+
 (global-set-key (kbd "M-o") 'other-window)
 (global-set-key (kbd "C-c SPC") 'just-one-space) ; work around Spotlight conflict on OSX
 

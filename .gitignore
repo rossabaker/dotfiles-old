@@ -4,10 +4,15 @@
 !.emacs.d/*.el
 .emacs.d/docker.el
 
+.gitconfig_local
+
 .sbt/**/private.sbt
 .sbt/**/target
 .sbt/0.13/dependency/
+.sbt/0.13/staging/
+.sbt/0.13/templates/
 .sbt/boot
+.sbt/ghpages
 .sbt/gpg
 
 .zsh/*.local

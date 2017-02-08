@@ -179,3 +179,7 @@
 (let ((docker-file (expand-file-name "~/.emacs.d/custom.el")))
   (if (file-readable-p docker-file)
     (load docker-file)))
+
+(when (eq system-type 'darwin) ;; mac specific settings
+  (setq mac-option-modifier nil)
+  (setq mac-command-modifier 'meta))

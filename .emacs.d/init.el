@@ -57,6 +57,11 @@
 (setq visible-bell       nil
       ring-bell-function #'ross/terminal-visible-bell)
 
+(use-package exec-path-from-shell
+  :config
+  (when (memq window-system '(mac ns))
+    (exec-path-from-shell-initialize)))
+
 (use-package magit
   :bind ("C-x g" . magit-status))
 
@@ -91,8 +96,8 @@
   :init
   (edit-server-start))
 
+;; Must happen after exec-path-from-shell, else https://github.com/ensime/ensime-server/issues/670
 (use-package ensime
-  :pin melpa-stable
   :config
   (setq scala-indent:use-javadoc-style t))
 (defun ross/ensime-project-p ()
@@ -162,11 +167,6 @@
 (use-package guru-mode
   :config
   (guru-global-mode +1))
-
-(use-package exec-path-from-shell
-  :config
-  (when (memq window-system '(mac ns))
-    (exec-path-from-shell-initialize)))
 
 (global-set-key (kbd "M-o") 'other-window)
 (global-set-key (kbd "C-c SPC") 'just-one-space) ; work around Spotlight conflict on OSX

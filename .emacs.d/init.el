@@ -165,6 +165,7 @@
   (setq eshell-status-in-modeline nil))
 
 (use-package guru-mode
+  :diminish guru-mode
   :config
   (guru-global-mode +1))
 

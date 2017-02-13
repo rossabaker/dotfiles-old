@@ -104,6 +104,8 @@
   "Are we in an Ensime project?"
   (ensime-config-find-file (or buffer-file-name default-directory)))
 
+(use-package go-mode)
+
 (use-package swiper
   :bind ("C-s" . swiper))
 

@@ -104,7 +104,12 @@
   "Are we in an Ensime project?"
   (ensime-config-find-file (or buffer-file-name default-directory)))
 
-(use-package go-mode)
+(use-package go-mode
+  :config
+  (progn
+	(add-hook 'before-save-hook 'gofmt-before-save)
+	(add-hook 'go-mode-hook
+			  (lambda () (setq tab-width 4)))))
 
 (use-package swiper
   :bind ("C-s" . swiper))

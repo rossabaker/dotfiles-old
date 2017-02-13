@@ -169,6 +169,12 @@
   :config
   (guru-global-mode +1))
 
+(use-package multiple-cursors
+  :bind
+  ("C->" . mc/mark-next-like-this)
+  ("C-<" . mc/mark-previous-like-this)
+  ("C-c C-<" . mc/mark-all-like-this))
+
 (global-set-key (kbd "M-o") 'other-window)
 (global-set-key (kbd "C-c SPC") 'just-one-space) ; work around Spotlight conflict on OSX
 

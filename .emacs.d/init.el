@@ -158,6 +158,8 @@
 
 (use-package markdown-mode)
 
+(use-package yaml-mode)
+
 (use-package hcl-mode)
 
 (use-package web-mode

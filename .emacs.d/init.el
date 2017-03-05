@@ -104,6 +104,11 @@
   "Are we in an Ensime project?"
   (ensime-config-find-file (or buffer-file-name default-directory)))
 
+;; https://github.com/eddsteel/df-emacs/blob/master/edd/edd-scala.el
+(defun ross/align-sbt-dependencies ()
+  (interactive)
+  (align-regexp (region-beginning) (region-end) "\\(\\s-+\\)\\(%%?\\|\"\\)" 1 1 't))
+
 (use-package go-mode
   :config
   (progn

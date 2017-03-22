@@ -64,6 +64,9 @@
 
 (use-package magit
   :bind ("C-x g" . magit-status))
+(use-package magithub
+  :after magit
+  :config (magithub-feature-autoinject t))
 
 (setq show-trailing-whitespace t
       indent-tabs-mode nil

@@ -83,6 +83,10 @@
 
 (use-package hcl-mode)
 
+(use-package hippie-exp
+  :config
+  (global-set-key [remap dabbrev-expand] 'hippie-expand))
+
 (use-package ivy
   :diminish ivy-mode
   :init

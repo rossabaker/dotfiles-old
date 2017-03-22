@@ -1,6 +1,6 @@
-export EDITOR=emacsclient
-export VISUAL=emacsclient
-export ALTERNATE_EDITOR=emacs
+export EDITOR="emacsclient -t -a=\\\"\\\""
+export VISUAL=$EDITOR
+export ALTERNATE_EDITOR="emacs -t"
 
 zshenv_local=$ZDOTDIR/.zshenv.local
 if [ -r $zshenv_local ]; then

@@ -227,6 +227,8 @@
       ring-bell-function #'terminal-visible-bell
       visible-bell nil)
 
+(set-default 'cursor-type 'bar)
+
 (global-set-key (kbd "M-o") 'other-window)
 (global-set-key (kbd "C-c SPC") 'just-one-space) ; work around Spotlight conflict on OSX
 (global-set-key (kbd "C-c c") 'compile-smarter)

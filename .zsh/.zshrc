@@ -31,6 +31,7 @@ fi
 
 alias ls='ls -Gp'
 alias grep="grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg.svn}"
+alias vi='emacsclient -t'
 
 zshrc_local=$ZDOTDIR/.zshrc.local
 if [ -r $zshrc_local ]; then

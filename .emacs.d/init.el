@@ -59,7 +59,8 @@
 
 (use-package ensime
   :config
-  (setq scala-indent:use-javadoc-style t))
+  (setq scala-indent:use-javadoc-style t)
+  :pin melpa)
 (defun ross/ensime-project-p ()
   "Are we in an Ensime project?"
   (ensime-config-find-file (or buffer-file-name default-directory)))

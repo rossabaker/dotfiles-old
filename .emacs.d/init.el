@@ -59,7 +59,9 @@
 
 (use-package ensime
   :config
-  (setq scala-indent:use-javadoc-style t)
+  (setq scala-indent:use-javadoc-style t
+	sbt:program-name "/usr/local/bin/sbt"
+	ensime-sbt-command "/usr/local/bin/sbt")
   :pin melpa)
 (defun ross/ensime-project-p ()
   "Are we in an Ensime project?"

@@ -9,7 +9,8 @@
  '(ensime-sbt-command "/usr/local/bin/sbt")
  '(package-selected-packages
    (quote
-    (go-mode multiple-cursors restclient exec-path-from-shell material-theme unfill edit-server web-mode hcl-mode markdown-mode undo-tree lorem-ipsum counsel swiper ivy zenburn-theme ensime ws-butler magit use-package))))
+    (go-mode multiple-cursors restclient exec-path-from-shell material-theme unfill edit-server web-mode hcl-mode markdown-mode undo-tree lorem-ipsum counsel swiper ivy zenburn-theme ensime ws-butler magit use-package)))
+ '(sbt:prompt-regexp "^\\(\\(scala\\|\\[[^]]*\\] \\)?[>$λ]\\|[ ]+|\\)[ ]*"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

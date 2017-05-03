@@ -62,11 +62,18 @@ A quick and minimal way to fix a bunch of default irritants.
 #+END_SRC
 
 * Appearance
-
+** Theme
 #+BEGIN_SRC emacs-lisp
 (use-package "dracula-theme"
   :init
   (load-theme 'dracula t))
+#+END_SRC
+** Cursor
+
+Won't somebody please stop the blinking?
+
+#+BEGIN_SRC emacs-lisp
+(blink-cursor-mode 0)
 #+END_SRC
 
 # Local Variables:

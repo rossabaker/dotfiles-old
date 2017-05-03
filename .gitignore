@@ -2,8 +2,8 @@
 
 .emacs.d/*
 !.emacs.d/*.el
-.emacs.d/.mc-lists.el
-.emacs.d/docker.el
+.emacs.d/settings.el
+!.emacs.d/*.org
 
 .gitconfig_local
 

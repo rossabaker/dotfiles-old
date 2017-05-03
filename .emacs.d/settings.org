@@ -55,6 +55,15 @@ A quick and minimal way to fix a bunch of default irritants.
   :ensure t)
 #+END_SRC
 
+* Appearance
+
+#+BEGIN_SRC emacs-lisp
+(use-package "dracula-theme"
+  :ensure t
+  :init
+  (load-theme 'dracula t))
+#+END_SRC
+
 # Local Variables:
 # org-src-preserve-indentation: t
 # End:

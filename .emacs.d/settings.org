@@ -46,20 +46,25 @@ This will slow down startup, but make sure we got it right.
 (require 'bind-key)
 #+END_SRC
 
+Lack of ~:ensure t~ has bitten me twice after two ~use-package~
+invocations. No more.
+
+#+BEGIN_SRC emacs-lisp
+(setq use-package-always-ensure t)
+#+END_SRC
+
 * Better defaults
 
 A quick and minimal way to fix a bunch of default irritants.
 
 #+BEGIN_SRC emacs-lisp
-(use-package "better-defaults"
-  :ensure t)
+(use-package "better-defaults")
 #+END_SRC
 
 * Appearance
 
 #+BEGIN_SRC emacs-lisp
 (use-package "dracula-theme"
-  :ensure t
   :init
   (load-theme 'dracula t))
 #+END_SRC

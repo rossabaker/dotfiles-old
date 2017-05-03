@@ -5,3 +5,7 @@ Baby, baby, baby, baby
 #+BEGIN_SRC emacs-lisp
 (message "My prune is yours, my love")
 #+END_SRC
+
+# Local Variables:
+# org-src-preserve-indentation: t
+# End:

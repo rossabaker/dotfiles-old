@@ -1,9 +1,38 @@
-See the way it builds up?  Feel it?
 
-Baby, baby, baby, baby
+* Security
+
+[[https://glyph.twistedmatrix.com/2015/11/editor-malware.html][Your Text Editor is Malware]]
 
 #+BEGIN_SRC emacs-lisp
-(message "My prune is yours, my love")
+(let ((trustfile
+       (replace-regexp-in-string
+        "\\\\" "/"
+        (replace-regexp-in-string
+         "\n" ""
+         (shell-command-to-string "python -m certifi")))))
+  (setq tls-program
+        (list
+         (format "gnutls-cli%s --x509cafile %s -p %%p %%h"
+                 (if (eq window-system 'w32) ".exe" "") trustfile))))
+#+END_SRC
+
+This will slow down startup, but make sure we got it right.
+
+#+BEGIN_SRC emacs-lisp
+(let ((bad-hosts
+       (cl-loop for bad
+             in `("https://wrong.host.badssl.com/"
+                  "https://self-signed.badssl.com/")
+             if (condition-case e
+                    (url-retrieve
+                     bad (lambda (retrieved) t))
+                  (error nil))
+             collect bad)))
+  (if bad-hosts
+      (error (format "tls misconfigured; retrieved %s ok"
+                     bad-hosts))
+    (url-retrieve "https://badssl.com"
+                  (lambda (retrieved) t))))
 #+END_SRC
 
 # Local Variables:

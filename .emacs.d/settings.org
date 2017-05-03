@@ -46,6 +46,14 @@ This will slow down startup, but make sure we got it right.
 (require 'bind-key)
 #+END_SRC
 
+* Better defaults
+
+A quick and minimal way to fix a bunch of default irritants.
+
+#+BEGIN_SRC emacs-lisp
+(use-package "better-defaults"
+  :ensure t)
+#+END_SRC
 
 # Local Variables:
 # org-src-preserve-indentation: t

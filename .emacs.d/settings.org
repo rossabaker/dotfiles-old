@@ -76,6 +76,15 @@ Won't somebody please stop the blinking?
 (blink-cursor-mode 0)
 #+END_SRC
 
+* Source control
+
+** Magit
+#+BEGIN_SRC emacs-lisp
+(use-package magit
+  :bind (("C-c g" . magit-status))
+  :diminish auto-revert-mode)
+#+END_SRC
+
 # Local Variables:
 # org-src-preserve-indentation: t
 # End:

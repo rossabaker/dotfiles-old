@@ -7,17 +7,9 @@
 			 ("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
 
+(setq custom-file (concat user-emacs-directory "custom.el"))
+(when (file-readable-p custom-file)
+  (load custom-file))
+
 ;; This is the exciting part. This is like The Supremes.
 (org-babel-load-file (concat user-emacs-directory "settings.org"))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(safe-local-variable-values (quote ((org-src-preserve-indentation . t)))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

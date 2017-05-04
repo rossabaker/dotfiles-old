@@ -107,3 +107,14 @@ To get ligatures on other Emacs ports, see [[https://github.com/tonsky/FiraCode/
 # Local Variables:
 # org-src-preserve-indentation: t
 # End:
+* Server
+
+Emacs starts a little slow.  With the TLS test above, this Emacs
+starts very slow.  We want a server.
+
+#+BEGIN_SRC emacs-lisp
+(use-package "server"
+  :init
+  (unless (server-running-p)
+    (server-start)))
+#+END_SRC

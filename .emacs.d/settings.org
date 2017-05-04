@@ -76,6 +76,25 @@ Won't somebody please stop the blinking?
 (blink-cursor-mode 0)
 #+END_SRC
 
+** Fonts
+
+Fira Code is pretty and has good ligature support.
+
+#+BEGIN_SRC emacs-lisp
+(when (window-system)
+  (set-default-font "Fira Code"))
+#+END_SRC
+
+To get that ligature support on the railwaycat Mac port, we can do
+this.
+
+#+BEGIN_SRC emacs-lisp
+(when (functionp 'mac-auto-operator-composition-mode)
+  (mac-auto-operator-composition-mode))
+#+END_SRC
+
+To get ligatures on other Emacs ports, see [[https://github.com/tonsky/FiraCode/wiki/Setting-up-Emacs][Setting up Emacs]].
+
 * Source control
 
 ** Magit

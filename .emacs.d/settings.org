@@ -107,6 +107,11 @@ To get ligatures on other Emacs ports, see [[https://github.com/tonsky/FiraCode/
 # Local Variables:
 # org-src-preserve-indentation: t
 # End:
+* Programming
+** Scala
+#+BEGIN_SRC emacs-lisp
+(use-package "ensime")
+#+END_SRC
 * Server
 
 Emacs starts a little slow.  With the TLS test above, this Emacs

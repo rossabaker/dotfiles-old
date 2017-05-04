@@ -64,9 +64,9 @@ A quick and minimal way to fix a bunch of default irritants.
 * Appearance
 ** Theme
 #+BEGIN_SRC emacs-lisp
-(use-package "dracula-theme"
+(use-package "color-theme-sanityinc-tomorrow"
   :init
-  (load-theme 'dracula t))
+  (load-theme 'sanityinc-tomorrow-night t))
 #+END_SRC
 ** Cursor
 

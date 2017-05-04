@@ -96,6 +96,16 @@ this.
 To get ligatures on other Emacs ports, see [[https://github.com/tonsky/FiraCode/wiki/Setting-up-Emacs][Setting up Emacs]].
 
 * Editing
+** Auto revert
+Revert all the things. I'm targeting dired with this in particular,
+but this seems a good idea in general.
+
+#+BEGIN_SRC emacs-lisp
+(global-auto-revert-mode t)
+(setq global-auto-revert-non-file-buffers t
+      auto-revert-verbose nil)
+#+END_SRC
+
 ** Whitespace
 #+BEGIN_SRC emacs-lisp
 (setq-default show-trailing-whitespace t)

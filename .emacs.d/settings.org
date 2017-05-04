@@ -114,9 +114,17 @@ but this seems a good idea in general.
 #+END_SRC
 
 ** Whitespace
+*** Trailing
 #+BEGIN_SRC emacs-lisp
 (setq-default show-trailing-whitespace t)
 #+END_SRC
+
+*** Tabs
+What sort of society tolerates tab indentation?
+#+BEGIN_SRC emacs-lisp
+(setq-default indent-tabs-mode nil)
+#+END_SRC
+
 * Window management
 #+BEGIN_SRC emacs-lisp
 (use-package "ace-window"

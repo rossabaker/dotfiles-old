@@ -125,6 +125,12 @@ What sort of society tolerates tab indentation?
 (setq-default indent-tabs-mode nil)
 #+END_SRC
 
+** Parens
+#+BEGIN_SRC emacs-lisp
+(use-package "rainbow-delimiters"
+  :init (rainbow-delimiters-mode))
+#+END_SRC
+
 * Window management
 #+BEGIN_SRC emacs-lisp
 (use-package "ace-window"

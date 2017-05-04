@@ -95,6 +95,11 @@ this.
 
 To get ligatures on other Emacs ports, see [[https://github.com/tonsky/FiraCode/wiki/Setting-up-Emacs][Setting up Emacs]].
 
+* Editing
+** Whitespace
+#+BEGIN_SRC emacs-lisp
+(setq-default show-trailing-whitespace t)
+#+END_SRC
 * Source control
 
 ** Magit
@@ -123,3 +128,4 @@ starts very slow.  We want a server.
   (unless (server-running-p)
     (server-start)))
 #+END_SRC
+

@@ -100,6 +100,11 @@ To get ligatures on other Emacs ports, see [[https://github.com/tonsky/FiraCode/
 #+BEGIN_SRC emacs-lisp
 (setq-default show-trailing-whitespace t)
 #+END_SRC
+* Window management
+#+BEGIN_SRC emacs-lisp
+(use-package "ace-window"
+  :bind (("M-o" . ace-window)))
+#+END_SRC
 * Source control
 
 ** Magit

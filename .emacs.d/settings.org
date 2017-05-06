@@ -82,7 +82,7 @@ Fira Code is pretty and has good ligature support.
 
 #+BEGIN_SRC emacs-lisp
 (when (window-system)
-  (set-default-font "Fira Code"))
+  (set-frame-font "Fira Code" t t))
 #+END_SRC
 
 To get that ligature support on the railwaycat Mac port, we can do

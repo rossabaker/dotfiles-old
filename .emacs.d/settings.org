@@ -128,7 +128,7 @@ What sort of society tolerates tab indentation?
 ** Parens
 #+BEGIN_SRC emacs-lisp
 (use-package "rainbow-delimiters"
-  :init (rainbow-delimiters-mode))
+  :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 #+END_SRC
 
 * Window management

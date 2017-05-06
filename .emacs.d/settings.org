@@ -153,6 +153,8 @@ What sort of society tolerates tab indentation?
 #+BEGIN_SRC emacs-lisp
 (use-package "ensime")
 #+END_SRC
+** Yaml
+(use-package "yaml-mode")
 * Server
 
 Emacs starts a little slow.  With the TLS test above, this Emacs

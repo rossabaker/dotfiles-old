@@ -280,6 +280,8 @@ avy "jumps to visible text using a char-based decision tree."
     (newline-and-indent)
     (scala-indent:insert-asterisk-on-multiline-comment))
 
+  (setq ensime-startup-notification nil)
+
   :bind (:map scala-mode-map 
               ("RET" . scala-mode-newline-comments)))
 #+END_SRC

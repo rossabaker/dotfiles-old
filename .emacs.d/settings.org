@@ -250,6 +250,14 @@ avy "jumps to visible text using a char-based decision tree."
 # org-src-preserve-indentation: t
 # End:
 * Programming
+** Go
+*** Templates
+#+BEGIN_SRC emacs-lisp
+(use-package "web-mode"
+  :config (setq web-mode-engines-alist
+                '(("go" . "\\.template\\'"))))
+
+#+END_SRC
 ** JSON
 "Programming"
 

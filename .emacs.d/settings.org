@@ -61,6 +61,13 @@ A quick and minimal way to fix a bunch of default irritants.
 (use-package "better-defaults")
 #+END_SRC
 
+Why in the world would I ever want to iconify my beloved Emacs?
+
+#+BEGIN_SRC emacs-lisp
+(when window-system
+ (global-unset-key (kbd "C-z")))
+#+END_SRC
+
 * Appearance
 ** Theme
 #+BEGIN_SRC emacs-lisp

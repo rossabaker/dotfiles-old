@@ -125,6 +125,11 @@ but this seems a good idea in general.
 #+END_SRC
 
 ** Whitespace
+** Expand region
+#+BEGIN_SRC emacs-lisp
+(use-package "expand-region"
+  :bind (("C-=" . er/expand-region)))
+#+END_SRC
 *** Trailing
 #+BEGIN_SRC emacs-lisp
 (setq-default show-trailing-whitespace t)

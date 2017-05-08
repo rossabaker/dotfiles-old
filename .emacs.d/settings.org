@@ -210,6 +210,19 @@ from the [[http://oremacs.com/swiper/#introduction][Ivy User Manual]].
          ("C-x l" . counsel-locate)
          ("C-c C-r" . ivy-resume)))
 #+END_SRC
+** Navigation
+avy "jumps to visible text using a char-based decision tree."
+
+#+BEGIN_SRC emacs-lisp
+(use-package "avy"
+  :config (avy-setup-default)
+  :bind (("C-:" . avy-goto-char)
+         ("C-'" . avy-goto-char-2)
+         ("M-g f" . avy-goto-line)
+         ("M-g w" . avy-goto-word-1)
+         ("M-g e" . avy-goto-word-0)))
+#+END_SRC
+
 ** Spell checking
 
 #+BEGIN_SRC emacs-lisp

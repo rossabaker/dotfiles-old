@@ -136,6 +136,18 @@ What sort of society tolerates tab indentation?
 (setq-default indent-tabs-mode nil)
 #+END_SRC
 
+*** Indentation
+Surprised this isn't a core function.
+
+#+BEGIN_SRC emacs-lisp
+(defun indent-buffer ()
+  "Indent the entire buffer."
+  (interactive)
+  (save-excursion
+    (delete-trailing-whitespace)
+    (indent-region (point-min) (point-max) nil)
+    (untabify (point-min) (point-max))))
+#+END_SRC
 ** Parens
 #+BEGIN_SRC emacs-lisp
 (use-package "rainbow-delimiters"

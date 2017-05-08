@@ -91,6 +91,14 @@ Won't somebody please stop the blinking?
 (blink-cursor-mode 0)
 #+END_SRC
 
+This helps us not lose the cursor.
+
+#+BEGIN_SRC emacs-lisp
+(use-package "beacon"
+  :init (beacon-mode +1)
+  :bind (("C-c b" . beacon-blink)))
+#+END_SRC
+
 ** Fonts
 
 Fira Code is pretty and has good ligature support.

@@ -70,10 +70,12 @@ Why in the world would I ever want to iconify my beloved Emacs?
 
 * Appearance
 ** Theme
+kaolin is a more subtle theme than most.
+
 #+BEGIN_SRC emacs-lisp
-(use-package "color-theme-sanityinc-tomorrow"
+(use-package "kaolin-theme"
   :init
-  (load-theme 'sanityinc-tomorrow-night t))
+  (load-theme 'kaolin t))
 #+END_SRC
 ** Cursor
 

@@ -250,6 +250,12 @@ avy "jumps to visible text using a char-based decision tree."
 # org-src-preserve-indentation: t
 # End:
 * Programming
+** JSON
+"Programming"
+
+#+BEGIN_SRC emacs-lisp
+(use-package "json-mode")
+#+END_SRC
 ** Scala
 #+BEGIN_SRC emacs-lisp
 (use-package "ensime"

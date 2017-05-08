@@ -68,6 +68,12 @@ Why in the world would I ever want to iconify my beloved Emacs?
  (global-unset-key (kbd "C-z")))
 #+END_SRC
 
+Until I can have ~'head-nod-or-head-shake-p~
+
+#+BEGIN_SRC emacs-lisp
+(fset 'yes-or-no-p 'y-or-n-p)
+#+END_SRC
+
 * Appearance
 ** Theme
 kaolin is a more subtle theme than most.

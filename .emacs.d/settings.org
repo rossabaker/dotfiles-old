@@ -163,8 +163,7 @@ from the [[http://oremacs.com/swiper/#introduction][Ivy User Manual]].
          ("C-c j" . counsel-git-grep)
          ("C-c k" . counsel-ag)
          ("C-x l" . counsel-locate)
-         ("C-c C-r" . ivy-resume)
-
+         ("C-c C-r" . ivy-resume)))
 #+END_SRC
 * Window management
 #+BEGIN_SRC emacs-lisp

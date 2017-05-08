@@ -189,8 +189,18 @@ from the [[http://oremacs.com/swiper/#introduction][Ivy User Manual]].
   :config
   (add-hook 'scala-mode-hook
             (lambda ()
-              (subword-mode +1))))
+              (subword-mode +1)
+              (scala-mode:goto-start-of-code)))
 
+  (defun scala-mode-newline-comments ()
+    "Custom newline appropriate for `scala-mode'."
+    ;; shouldn't this be in a post-insert hook?
+    (interactive)
+    (newline-and-indent)
+    (scala-indent:insert-asterisk-on-multiline-comment))
+
+  :bind (:map scala-mode-map 
+              ("RET" . scala-mode-newline-comments)))
 #+END_SRC
 ** Yaml
 (use-package "yaml-mode")

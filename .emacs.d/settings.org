@@ -185,7 +185,12 @@ from the [[http://oremacs.com/swiper/#introduction][Ivy User Manual]].
 * Programming
 ** Scala
 #+BEGIN_SRC emacs-lisp
-(use-package "ensime")
+(use-package "ensime"
+  :config
+  (add-hook 'scala-mode-hook
+            (lambda ()
+              (subword-mode +1))))
+
 #+END_SRC
 ** Yaml
 (use-package "yaml-mode")

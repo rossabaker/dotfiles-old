@@ -140,6 +140,12 @@ but this seems a good idea in general.
       auto-revert-verbose nil)
 #+END_SRC
 
+** Save place
+We want to save our location when saving files
+
+#+BEGIN_SRC emacs-lisp
+(save-place-mode +1)
+#+END_SRC
 ** Whitespace
 ** Expand region
 #+BEGIN_SRC emacs-lisp

@@ -96,6 +96,7 @@ This helps us not lose the cursor.
 #+BEGIN_SRC emacs-lisp
 (use-package "beacon"
   :init (beacon-mode +1)
+  :config (add-to-list 'beacon-dont-blink-major-modes 'sbt)
   :bind (("C-c b" . beacon-blink)))
 #+END_SRC
 

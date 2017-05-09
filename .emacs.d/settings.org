@@ -193,6 +193,7 @@ from the [[http://oremacs.com/swiper/#introduction][Ivy User Manual]].
 
 #+BEGIN_SRC emacs-lisp
 (use-package "ivy"
+  :diminish
   :init (ivy-mode)
   :config (setq ivy-use-virtual-buffers t
                 ivy-count-format "(%d/%d) "
@@ -228,6 +229,7 @@ avy "jumps to visible text using a char-based decision tree."
 
 #+BEGIN_SRC emacs-lisp
 (use-package "flyspell"
+  :diminish
   :init
   (add-hook 'prog-mode-hook 'flyspell-prog-mode)
   (add-hook 'text-mode-hook 'flyspell-mode))

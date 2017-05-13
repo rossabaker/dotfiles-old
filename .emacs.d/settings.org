@@ -267,6 +267,10 @@ avy "jumps to visible text using a char-based decision tree."
 #+BEGIN_SRC emacs-lisp
 (use-package "json-mode")
 #+END_SRC
+** Markdown
+#+BEGIN_SRC emacs-lisp
+(use-package "markdown-mode")
+#+END_SRC
 ** Scala
 #+BEGIN_SRC emacs-lisp
 (use-package "ensime"

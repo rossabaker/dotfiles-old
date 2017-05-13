@@ -274,6 +274,7 @@ avy "jumps to visible text using a char-based decision tree."
 ** Scala
 #+BEGIN_SRC emacs-lisp
 (use-package "ensime"
+  :pin melpa-stable
   :config
   (add-hook 'scala-mode-hook
             (lambda ()
@@ -290,7 +291,7 @@ avy "jumps to visible text using a char-based decision tree."
   (setq ensime-startup-notification nil
         ensime-startup-snapshot-notification nil)
 
-  :bind (:map scala-mode-map 
+  :bind (:map scala-mode-map
               ("RET" . scala-mode-newline-comments)))
 #+END_SRC
 ** Yaml

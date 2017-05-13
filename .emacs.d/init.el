@@ -4,8 +4,7 @@
 ;; A love that is strong, a prune that is true
 (require 'package)
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-			 ("melpa" . "https://melpa.org/packages/")
-                         ("melpa-stable" . "http://stable.melpa.org/packages/")))
+			 ("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
 
 (setq custom-file (concat user-emacs-directory "custom.el"))

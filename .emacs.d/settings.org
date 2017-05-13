@@ -270,6 +270,7 @@ avy "jumps to visible text using a char-based decision tree."
 ** Scala
 #+BEGIN_SRC emacs-lisp
 (use-package "ensime"
+  :pin melpa-stable
   :config
   (add-hook 'scala-mode-hook
             (lambda ()
@@ -284,9 +285,11 @@ avy "jumps to visible text using a char-based decision tree."
     (scala-indent:insert-asterisk-on-multiline-comment))
 
   (setq ensime-startup-notification nil
-        ensime-startup-snapshot-notification nil)
+        ensime-startup-snapshot-notification nil
+        ensime-eldoc-hints nil ;; this seems to be slowing us down considerably
+        )
 
-  :bind (:map scala-mode-map 
+  :bind (:map scala-mode-map
               ("RET" . scala-mode-newline-comments)))
 #+END_SRC
 ** Yaml

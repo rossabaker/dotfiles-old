@@ -123,6 +123,12 @@ To get ligatures on other Emacs ports, see [[https://github.com/tonsky/FiraCode/
 #+BEGIN_SRC emacs-lisp
 (setq inhibit-startup-screen t)
 #+END_SRC
+** Modeline
+
+#+BEGIN_SRC emacs-lisp
+(use-package spaceline-config
+  :config (spaceline-spacemacs-theme))
+#+END_SRC
 * Editing
 ** Line numbering
 #+BEGIN_SRC emacs-lisp

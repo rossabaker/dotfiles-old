@@ -36,15 +36,24 @@
 (use-package "better-defaults")
 (blink-cursor-mode -1)
 (fset 'yes-or-no-p #'y-or-n-p)
-(setq inhibit-startup-screen t)
+(setq inhibit-startup-screen t
+      save-interprogram-paste-before-kill t
+      uniquify-buffer-name-style 'forward
+      uniquify-separator "/"
+      uniquify-after-kill-buffer-p t
+      uniquify-ignore-buffers-re "^\\*"
+      view-read-only t)
 (setq-default indent-tabs-mode nil)
 
 ;; Font
 
 (when (window-system)
   (set-frame-font "Fira Code" t t))
-(when (functionp 'mac-auto-operator-composition-mode)
-  (mac-auto-operator-composition-mode))
+(when (eq system-type 'darwin)
+  (when (functionp 'mac-auto-operator-composition-mode)
+    (mac-auto-operator-composition-mode))
+  (if (fboundp 'set-fontset-font)
+      (set-fontset-font t 'unicode "Apple Color Emoji" nil 'prepend)))
 
 ;; Packages
 
@@ -73,17 +82,38 @@
          ("C-h u" . counsel-unicode-char)
          ("C-h v" . counsel-describe-variable)
          ("C-x C-f" . counsel-find-file)
-         ("M-x" . counsel-M-x)))
+         ("M-x" . counsel-M-x)
+         ("M-y" . counsel-yank-pop)
+         :map ivy-minibuffer-map
+         ("M-y" . ivy-next-line)))
 
 (use-package color-theme-sanityinc-tomorrow
   :config
   (load-theme 'sanityinc-tomorrow-night :no-confirm))
 
+(use-package crux
+  :bind
+  (("C-a" . crux-move-beginning-of-line)
+   ("C-k" . crux-smart-kill-line)
+   ("C-c D" . crux-delete-file-and-buffer)
+   ("C-c r" . crux-rename-file-and-buffer)
+   ("C-c I" . crux-find-user-init-file)
+   ("C-^" . crux-top-join-line)))
+
 (use-package delsel
   :init (delete-selection-mode))
 
+(use-package dired-narrow
+  :ensure t
+  :bind (:map dired-mode-map
+              ("/" . dired-narrow)))
+
 (use-package ensime
   :pin melpa-stable)
+
+(use-package exec-path-from-shell
+  :config
+  (exec-path-from-shell-initialize))
 
 (use-package expand-region
   :bind (("C-=" . er/expand-region)))
@@ -94,6 +124,12 @@
   (add-hook 'text-mode-hook 'flyspell-mode))
 
 (use-package go-mode)
+
+(use-package google-this
+  :init (google-this-mode))
+
+(use-package guru-mode
+  :init (guru-mode))
 
 (use-package ivy
   :init (ivy-mode)
@@ -109,8 +145,16 @@
 
 (use-package magit
   :bind ("C-c g" . magit-status))
-
+  
 (use-package markdown-mode)
+
+(use-package multiple-cursors
+  :bind (("C->" . mc/mark-next-like-this)
+         ("C-<" . mc/mark-previous-like-this)))
+
+(use-package persistent-scratch
+  :config
+  (persistent-scratch-setup-default))
 
 (use-package rainbow-delimiters
   :config
@@ -131,13 +175,22 @@
   (unless (server-running-p)
     (server-start)))
 
- (use-package spaceline
+(use-package shrink-whitespace
+  :bind (("C-c SPC" . shrink-whitespace)))
+
+(use-package spaceline
   :init (require 'spaceline-config)
   :config
   (spaceline-emacs-theme)) 
 
+(use-package undo-tree
+  :init (global-undo-tree-mode))
+
 (use-package web-mode
   :config
   (setq web-mode-engines-alist '(("go" . "\\.template\\'"))))
+
+(use-package which-key
+  :init (which-key-mode))
 
 (use-package yaml-mode)

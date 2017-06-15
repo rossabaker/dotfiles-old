@@ -49,7 +49,8 @@ values."
             scala-indent:use-javadoc-style t
             scala-auto-insert-asterisk-in-comments t
             scala-auto-start-ensime t
-            sbt:prompt-regexp "^\\(\\[[^\]]*\\] \\)?[>$λ][ ]*")
+            sbt:prompt-regexp "^\\(\\[[^\]]*\\] \\)?[>$λ][ ]*"
+            ensime-startup-notification nil)
      search-engine
      (shell :variables
             shell-default-height 30

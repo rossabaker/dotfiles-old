@@ -174,10 +174,39 @@ Swiper is an ivy-integrated isearch replacement.
         ("C-s" . swiper))
 #+END_SRC
 
-* Magit
+* Programming
+
+** Magit
 
 #+BEGIN_SRC emacs-lisp
 (use-package magit
   :ensure t
   :bind (("C-x g" . magit-status)))
 #+END_SRC
+
+** Languages
+
+*** Scala
+
+A more spartan Scala environment than Ensime.  Let's try it on for
+size.
+
+#+BEGIN_SRC emacs-lisp
+(use-package scala-mode
+  :ensure t
+  :interpreter
+  ("scala" . scala-mode))
+
+(use-package sbt-mode
+  :ensure t
+  :commands sbt-start sbt-command
+  :config
+  ;; WORKAROUND: https://github.com/ensime/emacs-sbt-mode/issues/31
+  ;; allows using SPACE when in the minibuffer
+  (substitute-key-definition
+   'minibuffer-complete-word
+   'self-insert-command
+   minibuffer-local-completion-map))
+#+END_SRC
+
+

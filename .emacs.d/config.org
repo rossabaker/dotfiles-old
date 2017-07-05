@@ -209,4 +209,11 @@ size.
    minibuffer-local-completion-map))
 #+END_SRC
 
+*** Yaml
 
+For those times you need JSON with an 84-page spec.
+
+#+BEGIN_SRC emacs-lisp
+(use-package yaml-mode
+  :ensure t)
+#+END_SRC

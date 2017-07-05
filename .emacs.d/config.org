@@ -1,4 +1,91 @@
 #+TITLE: Emacs config
 #+AUTHOR: Ross A. Baker
 
-This will be my emacs config.
+* Security
+
+[[https://glyph.twistedmatrix.com/2015/11/editor-malware.html][Your text editor is malware]].
+
+** Configure TLS
+
+Get certifi if you don't have it:
+
+#+BEGIN_SRC sh
+python -m pip install --user certifi
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(let ((trustfile
+       (replace-regexp-in-string
+        "\\\\" "/"
+        (replace-regexp-in-string
+         "\n" ""
+         (shell-command-to-string "python -m certifi")))))
+  (setq tls-checktrust t
+        tls-program 
+        (list
+         (format "gnutls-cli%s --x509cafile %s -p %%p %%h"
+                 (if (eq window-system 'w32) ".exe" "") trustfile))))
+#+END_SRC
+
+** Test it
+
+If all is well, this test function will message =TLS configuration is secure=.
+
+#+BEGIN_SRC emacs-lisp
+(require 'cl)
+(defun ross:test-tls-config ()
+  (interactive)
+  (let ((bad-hosts
+	 (cl-loop for bad
+	       in `("https://wrong.host.badssl.com/"
+		    "https://self-signed.badssl.com/")
+	       if (condition-case e
+		      (url-retrieve
+		       bad (lambda (retrieved) t))
+		    (error nil))
+	       collect bad)))
+    (if bad-hosts
+	(error (format "tls misconfigured; retrieved %s ok"
+		       bad-hosts))
+      (url-retrieve "https://badssl.com"
+		    (lambda (retrieved)
+                      (message "TLS configuration is secure")
+                      t)))))
+#+END_SRC
+
+Running it on every init will slow us down, but better safe than sorry.
+
+#+BEGIN_SRC emacs-lisp
+(ross:test-tls-config)
+#+END_SRC
+
+* Packages
+
+** https only
+
+We will only use secure archives here.
+
+#+BEGIN_SRC emacs-lisp
+(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")))
+#+END_SRC
+
+** Refresh package contents
+
+If we don't have them, get them.
+
+#+BEGIN_SRC emacs-lisp
+(when (not package-archive-contents)
+    (package-refresh-contents))
+#+END_SRC
+
+** use-package
+
+Bootstraps the =use-package= macro.  We'll use it for everything.
+
+#+BEGIN_SRC emacs-lisp
+(eval-when-compile
+  (require 'use-package))
+(require 'diminish)                ;; if you use :diminish
+(require 'bind-key)                ;; if you use any :bind variant
+#+END_SRC

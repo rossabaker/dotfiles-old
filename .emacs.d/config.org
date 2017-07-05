@@ -1,0 +1,4 @@
+#+TITLE: Emacs config
+#+AUTHOR: Ross A. Baker
+
+This will be my emacs config.

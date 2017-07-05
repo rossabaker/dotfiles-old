@@ -2,8 +2,8 @@
 
 .emacs.d/*
 !.emacs.d/*.el
+.emacs.d/config.el
 .emacs.d/custom.el
-.emacs.d/settings.el
 !.emacs.d/*.org
 
 .gitconfig_local

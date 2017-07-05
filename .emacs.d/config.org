@@ -85,6 +85,19 @@ everything else.
 (require 'bind-key)                ;; if you use any :bind variant
 #+END_SRC
 
+* Better defaults
+
+: this package attempts to address the most obvious of deficiencies in
+: uncontroversial ways that nearly everyone can agree upon
+
+Maybe we'll dissect this later, but this gets us a humane interface
+now.
+
+#+BEGIN_SRC emacs-lisp
+(use-package better-defaults
+  :ensure t)
+#+END_SRC
+
 * Magit
 
 #+BEGIN_SRC emacs-lisp

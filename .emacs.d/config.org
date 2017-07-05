@@ -98,6 +98,37 @@ now.
   :ensure t)
 #+END_SRC
 
+* Apperance
+
+** Theme
+
+A dark, tasteful, and relatively complete theme.
+
+#+BEGIN_SRC emacs-lisp
+(use-package color-theme-sanityinc-tomorrow
+  :ensure t
+  :init
+  (color-theme-sanityinc-tomorrow-night))
+#+END_SRC
+
+** Font
+
+Fira Code is a nice font with ligature support.
+
+#+BEGIN_SRC emacs-lisp
+(when (window-system)
+  (set-default-font "Fira Code"))
+#+END_SRC
+
+*** Enable ligatures
+
+This works on the railwaycat Mac port.  We'll need to do some [[https://github.com/tonsky/FiraCode/wiki/Setting-up-Emacs][more
+work]] on other platforms.
+
+#+BEGIN_SRC emacs-lisp
+(mac-auto-operator-composition-mode)
+#+END_SRC
+
 * Magit
 
 #+BEGIN_SRC emacs-lisp

@@ -1,3 +1,4 @@
-;; The meaty bits are in config.org
+(package-initialize)
+
 (require 'org)
 (org-babel-load-file (concat user-emacs-directory "config.org"))

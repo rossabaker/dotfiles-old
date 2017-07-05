@@ -63,27 +63,22 @@ Running it on every init will slow us down, but better safe than sorry.
 
 ** https only
 
-We will only use secure archives here.
+We will only use secure archives in this establishment.
 
 #+BEGIN_SRC emacs-lisp
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")))
 #+END_SRC
 
-** Refresh package contents
-
-If we don't have them, get them.
-
-#+BEGIN_SRC emacs-lisp
-(when (not package-archive-contents)
-    (package-refresh-contents))
-#+END_SRC
-
 ** use-package
 
-Bootstraps the =use-package= macro.  We'll use it for everything.
+Bootstraps the =use-package= macro.  We'll use it for almost
+everything else.
 
 #+BEGIN_SRC emacs-lisp
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 (eval-when-compile
   (require 'use-package))
 (require 'diminish)                ;; if you use :diminish

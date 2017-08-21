@@ -102,7 +102,6 @@
    ;;("S-k" . crux-kill-whole-line)
    ))
 
-
 (use-package exec-path-from-shell
   :ensure t
   :config
@@ -146,6 +145,19 @@
   :config
   (unless (server-running-p)
     (server-start)))
+
+(use-package simple
+  :config
+  (column-number-mode 1)
+  (line-number-mode 1)
+  (size-indication-mode 1))
+
+(use-package smart-mode-line
+  :ensure t
+  :init
+  (setq sml/no-confirm-load-theme t)
+  :config
+  (sml/setup))
 
 (use-package which-key
   :ensure t

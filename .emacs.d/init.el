@@ -46,6 +46,14 @@
   :config
   (global-auto-revert-mode))
 
+(use-package beacon
+  :ensure t
+  :diminish beacon-mode
+  :config
+  (beacon-mode t)
+  :bind
+  (("C-c b" . beacon-blink)))
+
 (use-package counsel
   :ensure t
   :bind

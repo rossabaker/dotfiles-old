@@ -156,6 +156,10 @@
   (("C-x g"   . magit-status)
    ("C-x M-g" . magit-dispatch-popup)))
 
+(use-package re-builder
+  :init
+  (setq reb-re-syntax 'string))
+
 (use-package recentf
   :ensure t
   :init

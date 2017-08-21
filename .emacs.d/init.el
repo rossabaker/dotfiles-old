@@ -30,7 +30,8 @@
 
 ;; Banish customizations to another file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(load custom-file t)
+(when (file-exists-p custom-file)
+  (load custom-file))
 
 ;; Establish some minimal level of decency
 (use-package better-defaults
@@ -88,5 +89,6 @@
 (use-package server
   :ensure t
   :config
-  (server-start))
+  (unless (server-running-p)
+    (server-start)))
 

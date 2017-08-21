@@ -37,6 +37,7 @@
 
 (use-package frame
   :config
-  (blink-cursor-mode -1))
+  (blink-cursor-mode -1)
+  (set-frame-font "Fira Code" nil t))
 
 

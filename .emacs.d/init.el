@@ -31,3 +31,6 @@
 ;; Banish customizations to another file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file t)
+
+(use-package better-defaults
+  :ensure t)

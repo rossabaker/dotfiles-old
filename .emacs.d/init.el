@@ -1,7 +1,7 @@
 ;; Packages
 ;; https://glyph.twistedmatrix.com/2015/11/editor-malware.html
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-			 ("melpa" . "https://melpa.org/packages/")))
+                         ("melpa" . "https://melpa.org/packages/")))
 (require 'tls)
 (require 'gnutls)
 (let ((trustfile
@@ -61,6 +61,40 @@
    ("C-c k"   . counsel-ag)
    ("C-x l"   . counsel-locate)))
 
+(use-package crux
+  :ensure t
+  :config
+  (crux-with-region-or-buffer indent-region)
+  (crux-with-region-or-buffer untabify)
+  (crux-with-region-or-line comment-or-uncomment-region)
+  (crux-with-region-or-point-to-eol kill-ring-save)
+  :bind
+  (("C-M-z"   . crux-indent-defun)
+   ("C-a"     . crux-move-beginning-of-line)
+   ("C-c D"   . crux-delete-file-and-buffer)
+   ("C-c I"   . crux-find-user-init-file)
+   ("C-c M-d" . crux-duplicate-and-comment-current-line-or-region)
+   ("C-c S"   . crux-find-shell-init-file)  
+   ("C-c TAB" . crux-indent-rigidly-and-copy-to-clipboard)
+   ("C-c ^"   . crux-top-join-line)
+   ("C-c d"   . crux-duplicate-current-line-or-region)
+   ("C-c e"   . crux-eval-and-replace)
+   ("C-c f"   . crux-recentf-find-file)
+   ("C-c n"   . crux-cleanup-buffer-or-region)
+   ("C-c o"   . crux-open-with)
+   ("C-c r"   . crux-rename-file-and-buffer)
+   ("C-c t"   . crux-visit-term-buffer)
+   ("C-c u"   . crux-view-url)
+   ("C-k"     . crux-smart-kill-line)
+   ("C-o"     . crux-smart-open-line)
+   ("C-x 4 t" . crux-transpose-windows)
+   ;;("C-S-Ret" . crux-smart-open-line-above)
+   ;;("C-c i" . crux-ispell-word-then-abbrev)
+   ;;("C-c k" . crux-kill-other-buffers)
+   ;;("S-k" . crux-kill-whole-line)
+   ))
+
+
 (use-package exec-path-from-shell
   :ensure t
   :config
@@ -70,7 +104,7 @@
 (use-package expand-region
   :commands er/expand-region
   :bind ("C-=" . er/expand-region))
-  
+
 (use-package frame
   :config
   (blink-cursor-mode -1)
@@ -96,4 +130,3 @@
   :config
   (unless (server-running-p)
     (server-start)))
-

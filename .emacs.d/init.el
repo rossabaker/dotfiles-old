@@ -34,3 +34,9 @@
 
 (use-package better-defaults
   :ensure t)
+
+(use-package frame
+  :config
+  (blink-cursor-mode -1))
+
+

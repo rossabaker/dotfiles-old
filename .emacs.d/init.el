@@ -102,6 +102,10 @@
    ;;("S-k" . crux-kill-whole-line)
    ))
 
+(use-package delsel
+  :config
+  (delete-selection-mode t))
+
 (use-package exec-path-from-shell
   :ensure t
   :config

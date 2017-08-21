@@ -106,9 +106,17 @@
   :bind ("C-=" . er/expand-region))
 
 (use-package frame
+  :init
+  (defun ross/maybe-suspend-frame ()
+    (interactive)
+    (if window-system
+        (message "suspend-frame disabled when on window system")
+      (suspend-frame)))
   :config
   (blink-cursor-mode -1)
-  (set-frame-font "Fira Code" nil t))
+  (set-frame-font "Fira Code" nil t)
+  :bind
+  (("C-z" . ross/maybe-suspend-frame)))
 
 (use-package ivy
   :ensure t

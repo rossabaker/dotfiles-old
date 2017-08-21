@@ -170,8 +170,8 @@
 (use-package magit
   :commands magit-dispatch-popup magit-status
   :bind
-  (("C-x g"   . magit-status)
-   ("C-x M-g" . magit-dispatch-popup)))
+  (("C-x g" . magit-status)
+   ("C-x G" . magit-dispatch-popup)))
 
 (use-package re-builder
   :init

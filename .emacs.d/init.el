@@ -145,6 +145,11 @@
   (("C-x g"   . magit-status)
    ("C-x M-g" . magit-dispatch-popup)))
 
+(use-package saveplace
+  :ensure t
+  :config
+  (save-place-mode 1))
+
 (use-package server
   :ensure t
   :config

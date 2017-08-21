@@ -113,6 +113,11 @@
   :config
   (delete-selection-mode t))
 
+(use-package diff-hl
+  :config
+  (diff-hl-flydiff-mode +1)
+  (global-diff-hl-mode +1))
+
 (use-package exec-path-from-shell
   :ensure t
   :config

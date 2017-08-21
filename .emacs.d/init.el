@@ -64,3 +64,9 @@
   (ivy-mode 1)
   :bind
   (("C-c C-r" . ivy-resume)))
+
+(use-package server
+  :ensure t
+  :config
+  (server-start))
+

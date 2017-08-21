@@ -118,6 +118,12 @@
   (diff-hl-flydiff-mode +1)
   (global-diff-hl-mode +1))
 
+(use-package easy-kill
+  :ensure t
+  :bind
+  (("M-w"   . easy-kill)
+   ("C-M-@" . easy-mark)))
+
 (use-package exec-path-from-shell
   :ensure t
   :config

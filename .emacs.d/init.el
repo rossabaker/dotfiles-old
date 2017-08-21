@@ -123,6 +123,10 @@
   :commands er/expand-region
   :bind ("C-=" . er/expand-region))
 
+(use-package executable
+  :config
+  (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p))
+
 (use-package frame
   :init
   (defun ross/maybe-suspend-frame ()

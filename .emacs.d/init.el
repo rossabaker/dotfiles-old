@@ -60,6 +60,12 @@
    ("C-c k"   . counsel-ag)
    ("C-x l"   . counsel-locate)))
 
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize)))
+
 (use-package expand-region
   :commands er/expand-region
   :bind ("C-=" . er/expand-region))

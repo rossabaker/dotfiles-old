@@ -51,6 +51,10 @@
    ("C-c k"   . counsel-ag)
    ("C-x l"   . counsel-locate)))
 
+(use-package expand-region
+  :commands er/expand-region
+  :bind ("C-=" . er/expand-region))
+  
 (use-package frame
   :config
   (blink-cursor-mode -1)

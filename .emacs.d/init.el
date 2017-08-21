@@ -145,10 +145,12 @@
   (("C-x g"   . magit-status)
    ("C-x M-g" . magit-dispatch-popup)))
 
-(use-package saveplace
+(use-package recentf
   :ensure t
+  :init
+  (setq recentf-max-saved-items 200)
   :config
-  (save-place-mode 1))
+  (recentf-mode +1))
 
 (use-package savehist
   :ensure t
@@ -157,6 +159,11 @@
         savehist-autosave-interval 60)
   :config
   (savehist-mode 1))
+
+(use-package saveplace
+  :ensure t
+  :config
+  (save-place-mode 1))
 
 (use-package server
   :ensure t

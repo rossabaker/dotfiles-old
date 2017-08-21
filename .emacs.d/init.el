@@ -146,3 +146,9 @@
   :config
   (unless (server-running-p)
     (server-start)))
+
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode t))
+

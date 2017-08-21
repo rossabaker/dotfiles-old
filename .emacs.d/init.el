@@ -61,6 +61,12 @@
   :bind
   (("C-c b" . beacon-blink)))
 
+(use-package compile
+  :init
+  (setq compilation-ask-about-save nil
+        compilation-always-kill t
+        compilation-scroll-output 'first-error))
+
 (use-package counsel
   :ensure t
   :bind

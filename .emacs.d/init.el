@@ -34,6 +34,7 @@
 
 (use-package better-defaults
   :ensure t)
+(setq inhibit-startup-screen t)
 
 (use-package counsel
   :ensure t

@@ -150,6 +150,14 @@
   :config
   (save-place-mode 1))
 
+(use-package savehist
+  :ensure t
+  :init
+  (setq savehist-additional-variables '(search-ring regexp-search-ring)
+        savehist-autosave-interval 60)
+  :config
+  (savehist-mode 1))
+
 (use-package server
   :ensure t
   :config

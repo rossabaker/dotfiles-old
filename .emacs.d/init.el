@@ -164,3 +164,8 @@
   :config
   (which-key-mode t))
 
+(use-package zop-to-char
+  :commands zop-to-char zop-up-to-char
+  :bind
+  (("M-z" . zop-up-to-char)
+   ("M-Z" . zop-to-char)))

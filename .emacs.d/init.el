@@ -86,6 +86,11 @@
   :bind
   (("C-c C-r" . ivy-resume)))
 
+(use-package magit
+  :commands magit-status
+  :bind
+  (("C-x g" . magit-status)))
+
 (use-package server
   :ensure t
   :config

@@ -37,6 +37,13 @@
 (use-package better-defaults
   :ensure t)
 (setq inhibit-startup-screen t)
+(dolist (x '(narrow-to-region
+             narrow-to-page
+             narrow-to-defun
+             upcase-region
+             downcase-region
+             erase-buffer))
+  (put x 'disabled nil))
 
 ;; Alphabetical henceforth
 

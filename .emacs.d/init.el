@@ -32,9 +32,18 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file t)
 
+;; Establish some minimal level of decency
 (use-package better-defaults
   :ensure t)
 (setq inhibit-startup-screen t)
+
+;; Alphabetical henceforth
+
+(use-package autorevert
+  :ensure t
+  :diminish auto-revert-mode
+  :config
+  (global-auto-revert-mode))
 
 (use-package counsel
   :ensure t

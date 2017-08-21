@@ -136,9 +136,10 @@
   (("C-c C-r" . ivy-resume)))
 
 (use-package magit
-  :commands magit-status
+  :commands magit-dispatch-popup magit-status
   :bind
-  (("C-x g" . magit-status)))
+  (("C-x g"   . magit-status)
+   ("C-x M-g" . magit-dispatch-popup)))
 
 (use-package server
   :ensure t

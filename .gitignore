@@ -13,6 +13,7 @@
 .sbt/0.13/dependency/
 .sbt/0.13/staging/
 .sbt/0.13/templates/
+.sbt/1.0/zinc/
 .sbt/boot
 .sbt/ghpages
 .sbt/gpg

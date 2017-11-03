@@ -47,6 +47,12 @@
 
 ;; Alphabetical henceforth
 
+(use-package autorevert
+  :ensure t
+  :diminish auto-revert-mode
+  :config
+  (global-auto-revert-mode 1))
+
 (use-package guru-mode
   :ensure t
   :diminish guru-mode

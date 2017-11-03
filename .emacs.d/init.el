@@ -48,6 +48,9 @@
   :ensure t
   :bind ("C-x g" . magit-status))
 
+(use-package restart-emacs
+  :ensure t)
+
 (use-package simple
   :config
   (column-number-mode 1)

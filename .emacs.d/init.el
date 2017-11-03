@@ -58,11 +58,34 @@
   :config
   (color-theme-sanityinc-tomorrow-night))
 
+(use-package counsel
+  :ensure t
+  :bind
+  ("M-x" . counsel-M-x)
+  ("C-x C-f" . counsel-find-file)
+  ("C-h f" . counsel-describe-function)
+  ("C-h v" . counsel-describe-variable)
+  ("C-h l" . counsel-find-library)
+  ("C-h S" . counsel-info-lookup-symbol)
+  ("C-x 8 RET" . counsel-unicode-char)
+  ("C-c g" . counsel-git)
+  ("C-c j" . counsel-git-grep)
+  ("C-c k" . counsel-ag))
+  
 (use-package guru-mode
   :ensure t
   :diminish guru-mode
   :config
   (guru-global-mode 1))
+
+(use-package ivy
+  :ensure t
+  :diminish ivy-mode
+  :config
+  (setq ivy-use-virtual-buffers t)
+  (ivy-mode 1)
+  :bind
+  ("C-c C-r" . ivy-resume))
 
 (use-package magit
   :ensure t
@@ -76,3 +99,8 @@
   :config
   (unless (server-running-p)
     (server-start)))
+
+(use-package swiper
+  :ensure t
+  :bind
+  ("C-s" . swiper))

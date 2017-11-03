@@ -38,6 +38,12 @@
 
 ;; Alphabetical henceforth
 
+(use-package simple
+  :config
+  (column-number-mode 1)
+  (line-number-mode 1)
+  (size-indication-mode 1))
+
 (use-package server
   :ensure t
   :config

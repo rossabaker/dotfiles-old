@@ -28,3 +28,6 @@
 (require 'diminish)
 (require 'bind-key)
 
+(use-package better-defaults
+  :ensure t)
+

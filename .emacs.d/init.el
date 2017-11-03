@@ -89,7 +89,7 @@
 
 (use-package magit
   :ensure t
-  :bind ("C-x g" . magit-status))
+  :bind ("C-c m" . magit-status))
 
 (use-package restart-emacs
   :ensure t)

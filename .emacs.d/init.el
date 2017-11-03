@@ -28,6 +28,11 @@
 (require 'diminish)
 (require 'bind-key)
 
+;; Banish customizations to another file
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(when (file-exists-p custom-file)
+  (load custom-file))
+
 (use-package better-defaults
   :ensure t)
 

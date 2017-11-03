@@ -53,6 +53,11 @@
   :config
   (global-auto-revert-mode 1))
 
+(use-package color-theme-sanityinc-tomorrow
+  :ensure t
+  :config
+  (color-theme-sanityinc-tomorrow-night))
+
 (use-package guru-mode
   :ensure t
   :diminish guru-mode

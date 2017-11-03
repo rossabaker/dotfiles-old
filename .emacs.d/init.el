@@ -33,8 +33,17 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
+;; Better defaults, plus better better defaults
 (use-package better-defaults
-  :ensure t)
+  :ensure t
+  :init
+  (setq inhibit-startup-screen t)
+  :config
+  (blink-cursor-mode -1)
+  (column-number-mode 1)
+  (delete-selection-mode 1)
+  (line-number-mode 1)
+  (size-indication-mode 1))
 
 ;; Alphabetical henceforth
 
@@ -50,12 +59,6 @@
 
 (use-package restart-emacs
   :ensure t)
-
-(use-package simple
-  :config
-  (column-number-mode 1)
-  (line-number-mode 1)
-  (size-indication-mode 1))
 
 (use-package server
   :ensure t

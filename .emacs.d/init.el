@@ -38,6 +38,10 @@
 
 ;; Alphabetical henceforth
 
+(use-package magit
+  :ensure t
+  :bind ("C-x g" . magit-status))
+
 (use-package simple
   :config
   (column-number-mode 1)

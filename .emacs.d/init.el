@@ -38,6 +38,12 @@
 
 ;; Alphabetical henceforth
 
+(use-package guru-mode
+  :ensure t
+  :diminish guru-mode
+  :config
+  (guru-global-mode 1))
+
 (use-package magit
   :ensure t
   :bind ("C-x g" . magit-status))

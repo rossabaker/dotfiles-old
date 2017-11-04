@@ -53,6 +53,12 @@
   :config
   (global-auto-revert-mode 1))
 
+(use-package beacon
+  :ensure t
+  :diminish beacon-mode
+  :config
+  (beacon-mode 1))
+
 (use-package color-theme-sanityinc-tomorrow
   :ensure t
   :config

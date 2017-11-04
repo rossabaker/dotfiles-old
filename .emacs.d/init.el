@@ -117,6 +117,12 @@
   :bind
   ("C-s" . swiper))
 
+(use-package which-func
+  :ensure t
+  :config
+  (setq which-func-unknown "⊥")
+  (which-function-mode t))
+
 (use-package which-key
   :ensure t
   :diminish which-key-mode

@@ -141,3 +141,9 @@
   :diminish which-key-mode
   :config
   (which-key-mode 1))
+
+;; Finally, load the sensitive bits
+
+(let ((private-file (expand-file-name "private.el" user-emacs-directory)))
+  (when (file-exists-p private-file)
+    (load private-file)))

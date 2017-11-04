@@ -4,6 +4,7 @@
 !.emacs.d/*.el
 .emacs.d/config.el
 .emacs.d/custom.el
+.emacs.d/private.el
 !.emacs.d/*.org
 
 .gitconfig_local

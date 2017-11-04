@@ -104,6 +104,12 @@
   :ensure t
   :bind ("C-c m" . magit-status))
 
+(use-package powerline
+  :ensure t
+  :config
+  (setq-default powerline-default-separator 'butt
+                powerline-height (truncate (* 1.33 (frame-char-height)))))
+  
 (use-package restart-emacs
   :ensure t)
 
@@ -116,7 +122,6 @@
 (use-package spaceline-config
   :ensure spaceline
   :config
-  (setq-default powerline-default-separator 'butt)
   (spaceline-emacs-theme))
 
 (use-package swiper

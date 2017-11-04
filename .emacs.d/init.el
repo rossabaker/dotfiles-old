@@ -112,6 +112,12 @@
   (unless (server-running-p)
     (server-start)))
 
+(use-package spaceline-config
+  :ensure spaceline
+  :config
+  (setq-default powerline-default-separator 'butt)
+  (spaceline-emacs-theme))
+
 (use-package swiper
   :ensure t
   :bind

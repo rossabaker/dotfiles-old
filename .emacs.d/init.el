@@ -71,6 +71,12 @@
   ("C-c g" . counsel-git)
   ("C-c j" . counsel-git-grep)
   ("C-c k" . counsel-ag))
+
+(use-package frame
+  :config
+  (blink-cursor-mode -1)
+  (when (window-system)
+    (set-default-font "Fira Code")))
   
 (use-package guru-mode
   :ensure t

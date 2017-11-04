@@ -38,6 +38,7 @@
   :ensure t
   :init
   (setq inhibit-startup-screen t)
+  (setq-default cursor-in-non-selected-windows)
   :config
   (blink-cursor-mode -1)
   (column-number-mode 1)

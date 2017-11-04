@@ -116,3 +116,9 @@
   :ensure t
   :bind
   ("C-s" . swiper))
+
+(use-package which-key
+  :ensure t
+  :diminish which-key-mode
+  :config
+  (which-key-mode 1))

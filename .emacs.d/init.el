@@ -83,7 +83,8 @@
   :config
   (blink-cursor-mode -1)
   (when (window-system)
-    (set-default-font "Fira Code")))
+    (set-default-font "Fira Code")
+    (global-unset-key (kbd "C-z"))))
   
 (use-package guru-mode
   :ensure t
